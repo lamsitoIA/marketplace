@@ -1,0 +1,54 @@
+
+
+/* .gallery .photo {
+  cursor: pointer;
+  padding: 10px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: left;
+  text-shadow: 0px 0px 15px black;
+}
+ */
+ .gallery .photo:hover {
+  box-shadow: 0px 0px 2px 1px black;
+}
+
+/* .gallery .photo svg {
+  align-self: flex-end;
+} */
+
+/* photo card {
+  width: 10rem;
+  height: 20rem;
+} */
+.border_heart {
+  border: 4px solid black;
+}
+
+.my_publication_favorite {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+  /* Estilos CSS para las Cards */
+  .card {
+    /* Agrega un sombreado suave por defecto */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease; /* Agrega una transición suave */
+  }
+  
+  /* Estilos CSS para cuando el cursor pasa sobre las Cards */
+  .card:hover {
+    /* Aumenta el sombreado al pasar el cursor */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Agrega un ligero desplazamiento hacia arriba */
+  }
+

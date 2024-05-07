@@ -1,0 +1,72 @@
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 11:05:32 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Latitude 6400","description":"GRADE A RECONDITIONED EQUIPMENT, MAY HAVE MILD AESTHETIC DETAILS FROM PRODUCTS OF USE. 100% FUNCTIONAL.","price":45000,"quantity":8,"isfavorite":"false","url_image":"https://static.elcontainer.cl/23974-big_default/notebook-dell-latitude-5400-intel-core-i7-32gb-ram-512gb-ssd.jpg","id_user":2,"id_categories":2,"id_brand":4}}
+Completed: 401 message:  Time response: 118 ms Request ID: [5d18404c-e2f7-4826-8f2f-ba94da979903]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 11:05:42 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"password1"}}
+Completed: 200 message:  Time response: 982 ms Request ID: [e20e9fbc-6c06-413f-a18f-fa181213adb9]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 11:05:58 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Latitude 6400","description":"GRADE A RECONDITIONED EQUIPMENT, MAY HAVE MILD AESTHETIC DETAILS FROM PRODUCTS OF USE. 100% FUNCTIONAL.","price":45000,"quantity":8,"isfavorite":"false","url_image":"https://static.elcontainer.cl/23974-big_default/notebook-dell-latitude-5400-intel-core-i7-32gb-ram-512gb-ssd.jpg","id_user":2,"id_categories":2,"id_brand":4}}
+Completed: 200 message:  Time response: 294 ms Request ID: [83e76159-8ce0-4169-9866-3e4f1c914e4a]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 11:08:06 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Latitude 6400","description":"GRADE A RECONDITIONED EQUIPMENT, MAY HAVE MILD AESTHETIC DETAILS FROM PRODUCTS OF USE. 100% FUNCTIONAL.","price":45000,"quantity":8,"isfavorite":"false","url_image":"https://static.elcontainer.cl/23974-big_default/notebook-dell-latitude-5400-intel-core-i7-32gb-ram-512gb-ssd.jpg","id_user":2,"id_categories":2,"id_brand":4}}
+Completed: 401 message:  Time response: 18 ms Request ID: [d32fdae7-ef13-4ed3-9ea0-62b53aa4e142]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 11:08:13 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Latitude 6400","description":"GRADE A RECONDITIONED EQUIPMENT, MAY HAVE MILD AESTHETIC DETAILS FROM PRODUCTS OF USE. 100% FUNCTIONAL.","price":45000,"quantity":8,"isfavorite":"false","url_image":"https://static.elcontainer.cl/23974-big_default/notebook-dell-latitude-5400-intel-core-i7-32gb-ram-512gb-ssd.jpg","id_user":2,"id_categories":2,"id_brand":4}}
+Completed: 200 message:  Time response: 210 ms Request ID: [a9c3c2e4-2b13-4ec6-9092-fdbe0fc84bbc]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:20:43 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Latitude 6400","description":"GRADE A RECONDITIONED EQUIPMENT, MAY HAVE MILD AESTHETIC DETAILS FROM PRODUCTS OF USE. 100% FUNCTIONAL.","price":45000,"quantity":8,"isfavorite":"false","url_image":"https://static.elcontainer.cl/23974-big_default/notebook-dell-latitude-5400-intel-core-i7-32gb-ram-512gb-ssd.jpg","id_user":2,"id_categories":2,"id_brand":4}}
+Completed: 401 message:  Time response: 298 ms Request ID: [37c6f136-509d-4408-979a-b735de0e3f34]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:30:12 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"password1"}}
+Completed: 200 message:  Time response: 1048 ms Request ID: [b9fb7491-3bc3-424f-a440-ee40490adc9f]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:32:02 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 401 message:  Time response: 221 ms Request ID: [1e578cce-bfbc-4c07-bc7b-6fe11e4b05f9]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:32:22 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 413 ms Request ID: [ff8cfe6c-1a9c-453a-ba22-d884635b1ca1]
+
+Started GET /api/v1/products/6 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:34:48 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 343 ms Request ID: [011dbced-da81-4ea6-9aca-822b05d5c269]
+
+Started GET /api/v1/products/5 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:43:06 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 389 ms Request ID: [6eac3579-9f9e-4a65-bfc8-3bc6dc4adbe9]
+
+Started GET /api/v1/products/ for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:43:12 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 132 ms Request ID: [76e74b1f-41da-4c7d-889a-75dd85cae995]
+
+Started GET /api/v1/products/4 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 12:43:19 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 39 ms Request ID: [cc2b6154-1a0b-4b99-b31a-4f692f480994]
+
+Started PUT /api/v1/products/4 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 13:09:33 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 355 ms Request ID: [c9588d67-0bb5-4f78-9c32-782f50b52635]
+
+Started GET /api/v1/products/4 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 13:09:47 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 197 ms Request ID: [4800d891-1039-4101-9d2f-d7f653b6d1e3]
+
+Started GET /api/v1/products for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 13:10:12 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 235 ms Request ID: [e0169fd3-08b3-460a-8313-d2c75b7ad5ef]
+
+Started GET /api/v1/products/5 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 13:10:22 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 36 ms Request ID: [3277b976-b650-4d3f-96a7-9dc03ef64e62]
+
+Started GET /api/v1/products/7 for :: ::ffff:127.0.0.1 at Fri Mar 08 2024 13:10:27 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"product":{"name":"Galaxy S24 Ultra","description":"The Samsung Galaxy S24 Ultra 512GB 5G will exceed your expectations and go further.","price":1000000,"quantity":5,"isfavorite":false,"url_image":"https://images.samsung.com/is/image/samsung/p6pim/cl/2401/gallery/cl-galaxy-s24-s928-490251-sm-s928blgkltl-thumb-539388482?imwidth=480","id_user":1,"id_categories":1,"id_brand":1}}
+Completed: 200 message:  Time response: 14 ms Request ID: [5ba28f8b-8288-45b2-87f1-06c9dc293bfa]

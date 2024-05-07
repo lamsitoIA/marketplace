@@ -1,0 +1,13 @@
+/* .card-body {
+    position: relative; 
+  } */
+  
+  .button-ver-detalles {
+    position: absolute;
+    bottom: calc(var(--bs-card-spacer-y) - 29px);
+    left: calc(var(--bs-card-spacer-x) - 25.6px); /* Ajusta el botón hacia la izquierda */
+    right: var(--bs-card-spacer-x);
+    width: calc(100% - (2 * var(--bs-card-spacer-x)));
+    padding: 3px !important;
+    border-radius: 3px !important;
+  }

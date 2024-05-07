@@ -1,0 +1,86 @@
+{
+    "products":[
+      {
+        "id": 1,
+        "name": "Smartwatch",
+        "description": "Advanced smartwatch with health tracking features",
+        "price": 199.99,
+        "quantity": 20,
+        "url": "https://rukminim1.flixcart.com/image/850/1000/kod858w0/smartwatch/4/d/4/1-33-cdh-270n-a1-smart-watch-compatiable-with-all-smart-phones-original-imag2uy2drjusgk6.jpeg?q=20"
+      },
+      {
+        "id": 2,
+        "name": "Wireless Earbuds",
+        "description": "High-quality wireless earbuds for immersive audio experience",
+        "price": 79.99,
+        "quantity": 15,
+        "url": "https://m.media-amazon.com/images/I/61Hwz5nhWdL.AC_UF1000,1000_QL80.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Gaming Mouse",
+        "description": "Precision gaming mouse with customizable RGB lighting",
+        "price": 49.99,
+        "quantity": 25,
+        "url": "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8830680/8830680_o01/8830680"
+      },
+      {
+        "id": 4,
+        "name": "Portable Charger",
+        "description": "Compact portable charger for charging devices on the go",
+        "price": 29.99,
+        "quantity": 30,
+        "url": "https://m.media-amazon.com/images/I/612vaudnEkL.AC_SL1500.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Smart Speaker",
+        "description": "Voice-controlled smart speaker with built-in virtual assistant",
+        "price": 149.99,
+        "quantity": 10,
+        "url": "https://i.pinimg.com/736x/f8/60/cf/f860cfcf7306adeca1a1c9412d0f28c5.jpg"
+
+      },
+
+      {
+        "id": 6,
+        "name": "Laptop",
+        "description": "Powerful laptop for all your computing needs",
+        "price": 999.99,
+        "quantity": 10,
+        "url": "https://p1-ofp.static.pub//medias/25932471988_LenovoThinkBook16Gen6ArcticGreyIMG_202307250411401698890165062.png"
+      },
+      {
+        "id": 7,
+        "name": "Charger for Cellphones",
+        "description": "Fast charger compatible with various cellphone models",
+        "price": 19.99,
+        "quantity": 20,
+        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyqPGusN35-hZEogoCA--OguKZfGIWPrWUQg&usqp=CAU"
+      },
+      {
+        "id": 8,
+        "name": "Tablet",
+        "description": "Sleek and portable tablet for entertainment and productivity",
+        "price": 299.99,
+        "quantity": 15,
+        "url": "https://www.latercera.com/resizer/oYVTbYYi8tanJJtBHxNOtHU3GUo=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/EBLMVWVFQJFOTGSPBNPB4655QM.webp"
+      },
+      {
+        "id": 9,
+        "name": "Monitor",
+        "description": "High-resolution monitor for immersive viewing experience",
+        "price": 249.99,
+        "quantity": 12,
+        "url": "https://www.lg.com/content/dam/channel/wcms/cl/images/monitores/20mk400h-b_awh_escl_cl_c/gallery/Global_20MK400_2018_Gallery_Large_01.jpg"
+      },
+      {
+        "id": 10,
+        "name": "External Hard Drive",
+        "description": "Expand your storage with this reliable external hard drive",
+        "price": 79.99,
+        "quantity": 25,
+        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mwZiDbPg8LSZR1_6YsyP5DvaZ5d195-RHLL89cpqTJ1WpbPSD_37hsru_qoDtbojEiU&usqp=CAU"
+  }
+ ]
+}

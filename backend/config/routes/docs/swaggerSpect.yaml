@@ -1,0 +1,319 @@
+tags:
+  - name: Products
+    description: Products API management
+  - name: Users
+    description: Users API management
+  - name: Login
+    description: Manage user sessions and ensure secure access to the application.
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Products:
+      type: object
+      required:
+        - name
+        - description
+        - price
+        - quantity
+        - state
+        - isFavorite
+        - url_image
+        - id_user
+        - id_categories
+        - id_brand
+      properties:
+        id_product:
+          type: integer
+          format: int32
+          description: The auto-generated id of the products
+        name:
+          type: string
+          minLength: 1
+          maxLength: 50
+          description: The name of the product. It should be a string of maximum 50 characters in length.
+        description:
+          type: string
+          minLength: 1
+          maxLength: 200
+          description: The product description. It must be a string of maximum 200 characters in length.
+        price:
+          type: integer
+          minumum: 0
+          description: The price of the product
+        quantity:
+          type: integer
+          minumum: 0
+          description: The quantity of product
+        state:
+          type: string
+          minumum: 0
+          maxLength: 20
+          description: New or used product
+        isFavorite:
+          type: boolean
+          description: Indicates whether the product has been marked as favorite by a user.This column stores a boolean value representing the favorite status.
+        url_image:
+          type: string
+          minLength: 1
+          maxLength: 500
+          format: uri
+          description: The URL of the product image. Must be a valid URI and cannot be empty.
+        id_user:
+          type: integer
+          description: The ID of the user who owns the product.This column establishes a foreign key relationship with the `users`
+        id_categories:
+          type: integer
+          description: The ID of the category to which the product belongs.This column establishes a foreign key relationship with the `categories` table.
+        id_brand:
+          type: integer
+          description: The ID of the brand associated with the product.This column establishes a foreign key relationship with the `brands` table.
+        createdAt:
+          type: string
+          description: The date of the record's creation
+        updatedAt:
+          type: string
+          description: The date of the record's last update
+      example:
+        name: Iphone 14 EN CAJA
+        description: Ipphone 14 con boleta en mano sellado
+        price: 900.000
+        quantity: 2
+        state: nuevo
+        isFavorite: false
+        url_image: "paris"
+        id_user: 2
+        id_categories: 1
+        id_brand: 3
+    Users:
+      type: object
+      required:
+        - name
+        - rut
+        - email
+        - password
+        - address
+        - url_icons
+      properties:
+        id_user:
+          type: integer
+          format: int32
+          description: The auto-generated id of the users
+        name:
+          type: string
+          minLength: 1
+          maxLength: 50
+          description: The name of the user. It should be a string of maximum 50 characters in length.
+        rut:
+          type: string
+          minLength: 1
+          maxLength: 30
+          unique: true
+          description: The user's RUT (Rol Único Tributario), a unique identifier for individuals in Chile.
+        email:
+          type: string
+          minLength: 1
+          maxLength: 100
+          unique: true
+          format: email
+          description: The user's email
+        password:
+          type: string
+          minLength: 1
+          maxLength: 100
+          description: The user's password
+        address:
+          type: string
+          minLength: 1
+          maxLength: 350
+          description: The user's address
+        url_icons:
+          type: string
+          minLength: 1
+          maxLength: 500
+          format: uri
+          description: The user's icon
+        createdAt:
+          type: string
+          description: The date of the record's creation
+        updatedAt:
+          type: string
+          description: The date of the record's last update
+      example:
+        name: Felipe
+        rut: 29.321.123-4
+        email: pipe@gmail.com
+        password: kernel
+        address: Calle jaguar 4421
+        url_icons: "https://cdn-icons-png.flaticon.com/512/6326/6326055.png"
+    Login:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          unique: true
+          format: email
+          description: The user's email
+        password:
+          type: string
+          minLength: 1
+          maxLength: 100
+          description: The user's password
+      example:
+        email: felipe@gmail.com
+        password: password1234
+
+paths:
+  /products:
+    get:
+      summary: Get all products
+      tags: [Products]
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Products"
+        "400":
+          description: Error obtaining the products
+
+    post:
+      summary: Create a new product
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  $ref: "#/components/schemas/Products"
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product:
+                    $ref: "#/components/schemas/Products"
+        "400":
+          description: Error creating trips
+
+  /products/{id}:
+    put:
+      summary: Update a product
+      tags: [Products]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The product id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  $ref: "#/components/schemas/Products"
+      security:
+      - BearerAuth: []        
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    $ref: "#/components/schemas/Products"
+        "400":
+          description: Error when updating a product
+
+    delete:
+      summary: Delete a product
+      tags: [Products]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The product id
+      security:
+      - BearerAuth: []         
+      responses:
+        "204":
+          description: Success
+        "400":
+          description: Error when deleting a product
+
+  /users:
+    post:
+      summary: Create user
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  $ref: "#/components/schemas/Users"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/Users"
+        "400":
+          description: Error creating user
+  /auth_user:
+    post:
+      summary: User authentication
+      tags: [Login]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  $ref: "#/components/schemas/Login"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/Login"
+        "400":
+          description: Error while authenticating

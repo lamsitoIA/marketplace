@@ -1,0 +1,212 @@
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:15:42 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 27 ms Request ID: [e4b6e12c-7b15-445b-9e2c-807551af9177]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:15:47 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 6 ms Request ID: [d4a8281e-5d77-4834-98be-717d241eb5b1]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:16:11 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 5 ms Request ID: [a24c01f2-ea6a-44e1-9a46-b213bd5b0d90]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:16:50 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 5 ms Request ID: [c04ca436-de90-43ce-b579-b04b3bb98792]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:16:50 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 8 ms Request ID: [47f0a88a-0155-4fe8-ada4-0a17ff8e615b]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:16:51 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [6125e641-684f-4498-9eb4-054a4525806b]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:22:21 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 325 ms Request ID: [699b2992-1f0c-43d0-9091-5f3d8f682c62]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:22:25 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 259 ms Request ID: [32212bb5-c86d-4599-a728-a0f6913604fe]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:22:41 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"194877854","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 200 message:  Time response: 240 ms Request ID: [303404c3-6315-4b8b-b9d2-6a7100e596c5]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:48:30 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 16 ms Request ID: [9972fe2d-d1ee-423e-b569-6911a2fbd211]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:48:31 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [9f8ef00b-27f0-421c-b137-4beef6b89972]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:48:31 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [47906f4b-ac49-48fa-a04c-8f154790a6ec]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:48:36 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [80bcb0fc-2195-40f0-83b3-783840c93e5d]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:48:37 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [1e42f75e-592a-4be7-b554-03788e8947a3]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:51:19 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [ee5628af-b27b-4f06-b3d9-253e54c6049c]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:51:34 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 5 ms Request ID: [55b50492-88a3-4e90-9a61-4c4dcc649f00]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:52:13 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [3ed9df5b-455c-48c0-b7f7-09aa81158ea3]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:55:18 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [7f9a8499-befb-4796-ba83-5c20d0157397]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:55:18 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 3 ms Request ID: [57706712-2801-49d6-bcd8-8b1a257421bc]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 00:55:57 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 200 message:  Time response: 285 ms Request ID: [ffd379f6-5fed-49ac-b1ae-25800d47399c]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:07 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"hans","rut":"19.487.785-4","email":"hans.latoja@gmail.com","password":"limon","address":"Calle los jazmines 210","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 13 ms Request ID: [65d1cc92-92f8-402f-aba7-fcd252df243f]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:53 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [b1eb2ba9-d4e5-4046-bf0c-712ed6811c95]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:54 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [46aedd18-3065-4807-9578-c1d3521e3259]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:54 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 3 ms Request ID: [f9be255d-ee0b-42c8-a5d1-f15670789ab5]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:54 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [fdc49b45-0ac5-4261-a2b2-fb419ed6ff83]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:54 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [eec56596-1c55-40e5-a5e7-7928ad13beba]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:54 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 3 ms Request ID: [a4703e2d-61c9-4265-a084-b37357a33cfb]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:55 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 3 ms Request ID: [0c86795e-c8e1-47f7-a762-cb1253eed7d4]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:03:55 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [9e8b2eaf-157b-4032-bc10-677b5dea51ca]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:06:07 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"name":"francisca","rut":"20.313.123-1","email":"fran@gmail.com","password":"limon","address":"Calle los jazmines 230","url_icons":"https://i.pinimg.com/736x/2a/c9/44/2ac944bce67608508bbc45bb7c3726c8.jpg"}}
+Completed: 200 message:  Time response: 317 ms Request ID: [02a163c3-b75b-4e3b-9500-321e1219b445]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:15:59 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 404 message:  Time response: 7 ms Request ID: [bdfea2fb-d590-42b0-83d8-4fa00b8877f5]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:18:26 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 200 message:  Time response: 260 ms Request ID: [2f10ea1f-b77f-4be2-b393-31834c96d955]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:18:37 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limonn"}}
+Completed: 400 message:  Time response: 264 ms Request ID: [6117e004-80fa-4371-b1c5-f819df151710]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:18:42 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.comm","password":"limonn"}}
+Completed: 400 message:  Time response: 4 ms Request ID: [5215f8a5-1685-4c97-942b-7005fc49147a]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:18:46 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 200 message:  Time response: 136 ms Request ID: [af6f780d-5ca1-4c7b-87e3-b16095a0ce33]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:20:09 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 200 message:  Time response: 257 ms Request ID: [44f66bd8-5cbe-42df-82f2-c6e7086b8eb6]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:21:18 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 200 message:  Time response: 221 ms Request ID: [550a1f21-83b3-40cf-b376-d5d1097fdb7e]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:21:23 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 200 message:  Time response: 139 ms Request ID: [b66835b5-85a9-46f8-863d-3175d35e3b45]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:21:27 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limonn"}}
+Completed: 400 message:  Time response: 139 ms Request ID: [efe8b9d5-8111-48ad-a53d-6cef6fe3c214]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 13:21:29 GMT-0300 (hora de verano de Chile)
+  Parameters in body: {"user":{"email":"fran@gmail.com","password":"limon"}}
+Completed: 200 message:  Time response: 141 ms Request ID: [6cdda905-65f4-4969-ad22-76753fc5a713]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:35:43 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"name":"pedro","rut":"111111","emal":"pedro@gmail.com","password":"password1","address":"la catalina amarilla 22","url_icons":"https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_640.png"}}
+Completed: 400 message:  Time response: 90 ms Request ID: [940ea675-5119-40c3-aadf-3c84ee3ca4ea]
+
+Started POST /api/v1/users for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:45:52 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"name":"pedro","rut":"111111","email":"pedro@gmail.com","password":"password1","address":"la catalina amarilla 22","url_icons":"https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_640.png"}}
+Completed: 200 message:  Time response: 762 ms Request ID: [fe745d32-131a-48de-bfb8-a12df564f1d5]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:54:27 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"111111"}}
+Completed: 400 message:  Time response: 606 ms Request ID: [e196b737-f26b-482a-8c75-9cd92549cd77]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:54:39 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"11111"}}
+Completed: 400 message:  Time response: 551 ms Request ID: [93bbb15f-7f69-4894-a9b7-42fd91bd71bb]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:54:45 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"1111"}}
+Completed: 400 message:  Time response: 391 ms Request ID: [d97d44c0-4ae3-444f-8f4e-f55c5a5d6442]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:54:53 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"111"}}
+Completed: 400 message:  Time response: 406 ms Request ID: [e45b8e0a-b7b3-49aa-89d2-d81f96088fec]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:55:01 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"1111111"}}
+Completed: 400 message:  Time response: 506 ms Request ID: [07c83aaf-e1b1-4f71-8a94-cd5f16761b07]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:55:24 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"1111"}}
+Completed: 400 message:  Time response: 571 ms Request ID: [e46102a2-d8e0-41ca-ac1b-9d0c67a1e310]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:55:31 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"11111"}}
+Completed: 400 message:  Time response: 397 ms Request ID: [24ca525b-3672-4a36-a0e5-50b04a421d80]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:55:35 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"111111"}}
+Completed: 400 message:  Time response: 402 ms Request ID: [704ac584-4096-4de1-82c3-e22658782526]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:55:39 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"1111111"}}
+Completed: 400 message:  Time response: 300 ms Request ID: [359e9931-af8b-40a9-a5c0-00c5ddef06df]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:55:42 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"11111111"}}
+Completed: 400 message:  Time response: 317 ms Request ID: [c6def6a6-4c14-4aa4-a548-09afc210dd3c]
+
+Started POST /api/v1/auth_user for :: ::ffff:127.0.0.1 at Wed Mar 06 2024 20:57:39 GMT-0300 (Chile Summer Time)
+  Parameters in body: {"user":{"email":"pedro@gmail.com","password":"password1"}}
+Completed: 200 message:  Time response: 718 ms Request ID: [d74525e4-2c5d-4ac0-8b9b-4ff1a03fd8ba]

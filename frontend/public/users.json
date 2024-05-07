@@ -1,0 +1,115 @@
+{
+    "users":[
+      {
+        "id": 1,
+        "name": "Claudia",
+        "rut": "19.412.412-3",
+        "email": "claudia@gmail.com",
+        "password": "password1",
+        "address": "calle los peralta, puente alto",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 2,
+        "name": "Felipe",
+        "rut": "20.321.654-4",
+        "email": "felipe@gmail.com",
+        "password": "password2",
+        "address": "calle los pinos, sanbernardo",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 3,
+        "name": "Martin",
+        "rut": "23.532.432-7",
+        "email": "martin@gmail.com",
+        "password": "password3",
+        "address": "calle los escobar, ñuñoa",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 4,
+        "name": "Luis",
+        "rut": "25.421.565-5",
+        "email": "luis@gmail.com",
+        "password": "password4",
+        "address": "calle los monjes, las condes",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 5,
+        "name": "Fernanda",
+        "rut": "12.432.658-2",
+        "email": "fer@gmail.com",
+        "password": "password5",
+        "address": "calle almirante, huechuraba",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+
+      {
+        "id": 6,
+        "name": "Estefany",
+        "rut": "22.434.775-4",
+        "email": "estefani@gmail.com",
+        "password": "password6",
+        "address": "calle misericordia, valparaiso",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 7,
+        "name": "Nicolas",
+        "rut": "26.213.689-0",
+        "email": "nico@gmail.com",
+        "password": "password7",
+        "address": "calle pasteles, santiago",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 8,
+        "name": "Alexander",
+        "rut": "4.532.432-3",
+        "email": "ale@gmail.com",
+        "password": "password8",
+        "address": "calle heroes, santiago",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 9,
+        "name": "Jean",
+        "rut": "5.123.678-3",
+        "email": 199.99,
+        "password": "password9",
+        "address": "calle las flores, vitacura",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      },
+      {
+        "id": 10,
+        "name": "Mauricio",
+        "rut": "26.198.451-5",
+        "email": 199.99,
+        "password": "password10",
+        "address": "calle los laureles, valparaiso",
+        "role" : "user",
+        "icons_url": "",
+        "auth_google": ""
+      }
+ ]
+}

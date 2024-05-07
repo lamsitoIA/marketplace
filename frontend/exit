@@ -1,0 +1,30 @@
+[33mcommit 7c7f6f2016cc9924d7bba65c0314bce95a6360cf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: josealexanderdrt <josealexanderdrt@gmail.com>
+Date:   Tue Feb 27 20:38:51 2024 -0300
+
+    segunda prueba de cambios
+
+[33mcommit 73b09de496779f927b87422d887fbbe1b9cbc9a7[m
+Merge: b70a36d 4db0dd8
+Author: NertaiL <hans.latoja@gmail.com>
+Date:   Tue Feb 27 20:34:20 2024 -0300
+
+    Resolve merge conflict in README.md
+
+[33mcommit b70a36dac588d11dcc79a4207b28050f3cfd37d5[m
+Author: NertaiL <hans.latoja@gmail.com>
+Date:   Tue Feb 27 20:26:01 2024 -0300
+
+    test-commit
+
+[33mcommit 4db0dd85c7195b64c74458dd056f78a9ea310835[m
+Author: josealexanderdrt <josealexanderdrt@gmail.com>
+Date:   Tue Feb 27 20:20:35 2024 -0300
+
+    prueba de cambios
+
+[33mcommit 33c4a319e14d4d6fd20cf7b4faff974a4f49d22d[m
+Author: Hans Latoja <130710382+NertaiL@users.noreply.github.com>
+Date:   Tue Feb 27 19:42:51 2024 -0300
+
+    Initial commit

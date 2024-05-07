@@ -1,0 +1,20 @@
+
+
+  .cubos1{
+    width: 5rem;
+
+  }
+
+
+  .navbarLam {
+    height: 70px;
+    background-color: transparent !important;
+
+  }
+
+  .navbarLam {
+    position: absolute; /* O puedes usar 'absolute' según tus necesidades */
+    top: 0;
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    z-index: 2000; /* Un valor alto para asegurarse de que esté por encima de otros componentes */
+  }

@@ -1,0 +1,67 @@
+
+.filter_price {
+  display: flex;
+  gap: 1rem;
+}
+
+/* .card-daddy{
+
+} */
+
+.box-daddy-allproducts {
+  display: flex;
+}
+
+/* .input_filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 80rem;  
+} */
+
+.input_filter {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  /*   position: sticky;  */ /* Ajusta la distancia desde la parte superior según sea necesario */
+  border-radius: 5px; /* Opcional: agrega esquinas redondeadas para un mejor aspecto */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */ /* Opcional: agrega sombra para resaltar los filtros */
+}
+/* .container{
+    display: flex;.
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+} */
+
+/* .input_filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+} */
+
+.boton {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+}
+
+.icon-heart-container {
+  position: absolute;
+  right: 10px;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.card {
+  min-height: 250px;
+}

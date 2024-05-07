@@ -1,0 +1,17 @@
+.icon-style {
+  font-size: 3em;
+  color: #000;
+  border: 2px solid #ff69b4;
+  border-radius: 50%;
+}
+
+
+.social-icon {
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+  background: rgb(245, 243, 243);
+  border-radius: 40%;
+}

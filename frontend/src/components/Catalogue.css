@@ -1,0 +1,46 @@
+.carousel-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ajusta la altura si es necesario */
+  }
+
+ div.carousel-indicators{
+padding: 150px;
+  }
+.linkText {
+  text-decoration: none;
+  color: inherit;
+  
+
+}
+  
+
+  .divgotoproductusbutton{
+
+    background-image: url("../assets/image/home-button.png") ;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5); /* Add shadow */
+    transition: transform 0.6s, box-shadow 0.3s;
+  }
+
+  .divgotoproductusbutton:hover {
+    transform: scale(1.05); /* Scale up slightly on hover */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); /* Increase shadow on hover */
+  }
+
+  
+  .gotoproductusbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
