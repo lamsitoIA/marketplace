@@ -25,7 +25,7 @@ app.use("/api/v1", productRouter);
 app.listen(PORT, () => {
   console.log(`🔥 Server ON 🔥 en el puerto http://localhost:${PORT}`); //local
   console.log(`market-place docs available at http://localhost:${PORT}/api/v1/docs`); //documentation local
-  console.log(`market-place production documents available https://marketplace-if9n.onrender.com/api/v1/docs`);
+  console.log(`market-place production documents available https://marketplace-if9n.onrender.com/api/v1/docs`); //documentation prod
 });                                                      
 
 export default app;
