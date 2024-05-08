@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://marketplace-backend-vex0.onrender.com/api/v1", 
+        url: "https://marketplace-if9n.onrender.com/api/v1", 
       },
     ],
   },

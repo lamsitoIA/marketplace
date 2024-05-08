@@ -15,7 +15,7 @@ CREATE TABLE users
 );
 
 INSERT INTO users (name, rut, email, password, address, url_icons) 
-VALUES ('Ignacio', '12.345.678-9', 'nacho@example.com', '123', 'Calle 123', 'https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369991.png');
+VALUES ('Ignacio', '12.345.678-9', 'sofi@gmail.com', '123', 'Calle 123', 'https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369991.png');
 
 
 CREATE FUNCTION update_updated_at_users()
