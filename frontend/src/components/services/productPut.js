@@ -5,7 +5,7 @@ import { GiConsoleController } from "react-icons/gi";
 /* import { useParams } from "react-router-dom";
 const { id } = useParams(); */
 
-const URL_API = "http://marketplace-if9n.onrender.com/api/v1/products";
+const URL_API = "https://marketplace-if9n.onrender.com/api/v1/products";
 
          
 export const productPut = async (id,product, token) => {

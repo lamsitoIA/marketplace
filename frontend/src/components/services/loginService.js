@@ -1,6 +1,6 @@
 // Reemplazar por la URL de la API
 //const URL_API = "http://localhost:3000/api/v1/auth_user";
-const URL_API = "http://marketplace-if9n.onrender.com/api/v1/auth_user";
+const URL_API = "https://marketplace-if9n.onrender.com/api/v1/auth_user";
 
 
 
