@@ -1,8 +1,8 @@
-import pg from "pg";
+/* import pg from "pg";
 import { host, user, password, database, port } from "../enviroment.js";
 import "dotenv/config";
 
-/* // Para acceder a la base de datos de production desde la terminal, ingresa a la terminal y luego pegas esto      psql postgres://hans:NXFUVonMgEmSGbUEcrkGEA33OK1Acw1E@dpg-cnp16dta73kc73d0644g-a.oregon-postgres.render.com/lam_production             esto postgres://hans:NXFUVonMgEmSGbUEcrkGEA33OK1Acw1E@dpg-cnp16dta73kc73d0644g-a.oregon-postgres.render.com/lam_production viene de External Database URL de render y solo le agregas el psql y luego el link al lado
+// Para acceder a la base de datos de production desde la terminal, ingresa a la terminal y luego pegas esto      psql postgres://hans:NXFUVonMgEmSGbUEcrkGEA33OK1Acw1E@dpg-cnp16dta73kc73d0644g-a.oregon-postgres.render.com/lam_production             esto postgres://hans:NXFUVonMgEmSGbUEcrkGEA33OK1Acw1E@dpg-cnp16dta73kc73d0644g-a.oregon-postgres.render.com/lam_production viene de External Database URL de render y solo le agregas el psql y luego el link al lado
 const pool = new pg.Pool({
   //En JavaScript, new pg.Pool(...) crea una nueva instancia de un objeto que es una instancia de la clase Pool proporcionada por el módulo pg. Esta clase Pool es una clase proporcionada por el módulo pg que encapsula la lógica para administrar conexiones a la base de datos PostgreSQL utilizando el pool de conexiones. Entonces, en tu caso, new pg.Pool(...) es seguido de la creación de una instancia de la clase Pool
   host: host,
