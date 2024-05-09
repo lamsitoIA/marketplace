@@ -1,4 +1,4 @@
-/* import pg from "pg";
+import pg from "pg";
 import { host, user, password, database, port } from "../enviroment.js";
 import "dotenv/config";
 
@@ -13,7 +13,7 @@ const pool = new pg.Pool({
   allowExitOnIdle: true, //es una opción que indica que el proceso Node.js debe salir automáticamente cuando el pool de conexiones esté inactivo. Esto es útil en entornos como las aplicaciones de línea de comandos donde se espera que el proceso termine cuando no hay más tareas que realizar.,
 });
 
-export default pool; */
+export default pool;
 
 //2da opcion
 /* let pool;
@@ -37,7 +37,7 @@ pool.on("connect", () => console.log("🔋 DB connected")); */ //para saber que 
 
 //3ra opcion asi funciona pasandolo directo
 
-import "dotenv/config";
+/* import "dotenv/config";
 import pg from "pg"; 
 
 //lo que hace new, es crear una instancia de objeto de Pool, entonces que hace Pool es para especificar la config para establecer la conexion a la base de datos, entonces por eso hacemos el new para que Pool pueda ser un objeto y asi agrupar todo.
@@ -51,7 +51,7 @@ const pool = new pg.Pool({
   allowExitOnIdle: true 
 });
 
-export default pool;
+export default pool; */
 
 /* host: process.env.DB_HOST_PROD,
   user: process.env.DB_USER_PROD,
