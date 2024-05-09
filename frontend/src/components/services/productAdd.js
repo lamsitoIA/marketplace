@@ -1,6 +1,6 @@
 // Reemplazar por la URL de la API
-//const URL_API = "http://localhost:3000/api/v1/products"; //https://marketplace-backend-vex0.onrender.com 
-const URL_API = "https://marketplace-if9n.onrender.com/api/v1/products"; 
+const URL_API = "http://localhost:3000/api/v1/products"; //https://marketplace-backend-vex0.onrender.com 
+//const URL_API = "https://marketplace-if9n.onrender.com/api/v1/products"; 
 
 export const productAdd = async (post) => {
  
