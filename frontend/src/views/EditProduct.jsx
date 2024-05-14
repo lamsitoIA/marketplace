@@ -8,19 +8,10 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 import { Container } from "react-bootstrap";
 
 const EditProduct = () => {
-  const [publicacion, setPublicacion] = useState([]);
-
-  const cambiodeInfoProducto = (publicacion) =>{
-    productPut(publicacion).then((data) =>{
-      setPublicacion([... publicacion, data]);
-    }).catch((err)=>{
-      console.log(err)
-    })
-  }
-  console.log("estoy en modificación de producto ")
+  
   return (
     <>
-      <EdicionDelNuevoProduct cambiodeInfoProducto={cambiodeInfoProducto}  />
+      <EdicionDelNuevoProduct />
       
     </>
   );
