@@ -20,7 +20,7 @@ const EdicionDelNuevoProduct = () => {
 
   const { getMyProducts, products } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
- 
+
   const findProductById = (productId) => {
     return products.find(
       (product) => product.id_product === parseInt(productId)
@@ -28,30 +28,25 @@ const EdicionDelNuevoProduct = () => {
   };
   const productDescription = findProductById(id);
 
-  const [name, setName] = useState(productDescription.name_product)
-  const [description, setDescription] = useState(productDescription.description);
+  const [name, setName] = useState(productDescription.name_product);
+  const [description, setDescription] = useState(
+    productDescription.description
+  );
   const [price, setPrice] = useState(productDescription.price);
   const [quantity, setQuantity] = useState(productDescription.quantity);
   const [state, setState] = useState(productDescription.state);
   const [url_image, setUrl_image] = useState(productDescription.url_image);
   const [id_user, setId_user] = useState();
-  const [id_categories, setId_categories] = useState(productDescription.id_categories);
+  const [id_categories, setId_categories] = useState(
+    productDescription.id_categories
+  );
   const [id_brand, setId_brand] = useState(productDescription.id_brand);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-
-
-
-console.log("set name es ", productDescription.name_product)
-  
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
- 
 
     const nuevoProducto = {
       product: {
@@ -64,12 +59,11 @@ console.log("set name es ", productDescription.name_product)
         id_user: userId,
         id_categories: id_categories,
         id_brand: id_brand,
-        id_product : id,
-
+        id_product: id,
       },
     };
 
-    productPut(id, nuevoProducto,token)
+    productPut(id, nuevoProducto, token)
       .then((response) => {
         setIsLoading(false);
         if (response.updatedProduct) {
@@ -78,7 +72,7 @@ console.log("set name es ", productDescription.name_product)
             navigate(`/profile/${userId}`);
           }, 1000);
         } else {
-          console.log("error es", error)
+          console.log("error es", error);
           throw Error("Error al registrar producto.");
         }
       })
@@ -95,10 +89,6 @@ console.log("set name es ", productDescription.name_product)
           transition: Bounce,
         });
       });
-
-
-
-
   };
 
   return (
@@ -107,12 +97,14 @@ console.log("set name es ", productDescription.name_product)
         <div className="col-12 col-md-6">
           <PreviewProduct
             name={name ? name : productDescription.name_product}
-            description={description ? description : productDescription.description}
-            price={price ? price: productDescription.price}
-            url_image={url_image ? url_image: productDescription.url_image}
+            description={
+              description ? description : productDescription.description
+            }
+            price={price ? price : productDescription.price}
+            url_image={url_image ? url_image : productDescription.url_image}
             username={username}
             state={state ? state : productDescription.state}
-            quantity={quantity ? quantity : productDescription.quantity }
+            quantity={quantity ? quantity : productDescription.quantity}
           />
         </div>
 
@@ -122,7 +114,7 @@ console.log("set name es ", productDescription.name_product)
               <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="text"
-                placeholder= {productDescription.name_product}
+                placeholder={productDescription.name_product}
                 onChange={(e) => setName(e.target.value)}
                 value={name ? name : productDescription.name_product}
               />
@@ -133,7 +125,9 @@ console.log("set name es ", productDescription.name_product)
               <Form.Control
                 type="text"
                 placeholder={productDescription.description}
-                value={description ? description : productDescription.description}
+                value={
+                  description ? description : productDescription.description
+                }
                 onChange={(e) => setDescription(e.target.value)}
               />
             </Form.Group>
@@ -144,7 +138,7 @@ console.log("set name es ", productDescription.name_product)
                 type="text"
                 placeholder={productDescription.price}
                 onChange={(e) => setPrice(e.target.value)}
-                value={price ? price :  productDescription.price}
+                value={price ? price : productDescription.price}
               />
             </Form.Group>
 
@@ -154,7 +148,7 @@ console.log("set name es ", productDescription.name_product)
                 type="number"
                 placeholder={productDescription.quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                value={quantity ? quantity : productDescription.quantity }
+                value={quantity ? quantity : productDescription.quantity}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicState">
@@ -173,7 +167,7 @@ console.log("set name es ", productDescription.name_product)
                 type="text"
                 placeholder={productDescription.url_image}
                 onChange={(e) => setUrl_image(e.target.value)}
-                value={url_image ? url_image: productDescription.url_image}
+                value={url_image ? url_image : productDescription.url_image}
               />
             </Form.Group>
 
@@ -182,7 +176,11 @@ console.log("set name es ", productDescription.name_product)
               <Form.Select
                 aria-label="Default select example"
                 onChange={(e) => setId_categories(e.target.value)}
-                value={id_categories ? id_categories: productDescription.id_categories}
+                value={
+                  id_categories
+                    ? id_categories
+                    : productDescription.id_categories
+                }
               >
                 <option>{productDescription.id_categories}</option>
                 <option value="1">Phone</option>
