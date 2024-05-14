@@ -14,14 +14,14 @@ export const productPut = async (id,product, token) => {
     const response = await fetch( `${URL_API}/${id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+ token,
+        "Content-Type": "application/json", //aqui le decimos que el contenido esta json
+        "Authorization": "Bearer "+ token, //aca le pasamos el token, yaque es la ruta esta protegida
       },
-      body: JSON.stringify(product),
+      body: JSON.stringify(product), //para convertir el cuerpo de javascript que escribio el usuario y transformarlo a json para poder mandarlo al backend.
     });
-    const data = await response.json();
+    const data = await response.json(); //aqui quedaria la respuesta del backend
     console.log("data", data)
-    return data;
+    return data; //aqui retornamos el cuerpo del backend
 };
 
 // Se encarca de llamar a la api y manejar su respuesta.

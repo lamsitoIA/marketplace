@@ -72,8 +72,8 @@ console.log("set name es ", productDescription.name_product)
     productPut(id, nuevoProducto,token)
       .then((response) => {
         setIsLoading(false);
-        if (response.updatedProduct) {
-          setTimeout(() => {
+        if (response.updatedProduct) { //validacion si la respuesta viene updatedProduct es verdadero. o puede ser codigo 200
+          setTimeout(() => { 
             getMyProducts();
             navigate(`/profile/${userId}`);
           }, 1000);
