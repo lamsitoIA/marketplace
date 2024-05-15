@@ -1,5 +1,5 @@
 import React from "react";
-import Catalogue from "../components/Catalogue.jsx";
+import Banner from "../components/BannerHomePage.jsx";
 import Footerlam from "../components/Footerlam.jsx";
 import Transition from "../components/Transition.jsx";
 import CardsHome from "../components/HomePage.jsx";
@@ -8,7 +8,7 @@ import CardsHome from "../components/HomePage.jsx";
 const Home = () => {
   return (
     <>
-      <Catalogue />
+      <Banner />
       <Transition />
       <CardsHome
         isHomePage={false} /* aqui no se van a ver los filtros */

@@ -10,7 +10,6 @@ import MyFavorite from "../views/MyFavorite";
 import AddProduct from "../views/AddProduct";
 import AllProducts from "../views/AllProducts";
 import EditProduct from "../views/EditProduct.jsx";
-/* import AllproductsComponent from "../components/AllproductsComponent"; */
 import DetailProductComponent from "../views/DetailProductComponent";
 import RouteProtection from "../components/RouteProtection.jsx";
 import { UserContext } from "../context/UserContext";

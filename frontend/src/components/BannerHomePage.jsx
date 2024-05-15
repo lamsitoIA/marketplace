@@ -4,10 +4,10 @@ import aPic from "../assets/image/lam-home.png";
 import bPic from "../assets/image/sharge-disk-home.png";
 import cPic from "../assets/image/smart-watch-home.png";
 import dPic from "../assets/image/smart-speaker-home.png";
-import "../components/Catalogue.css";
+import "../components/BannerHomePage.css";
 import { Link } from "react-router-dom";
 
-const Catalogue = () => {
+const BannerHomePage = () => {
   return (
     <div>
       <Carousel data-bs-theme="dark" slide interval={10000} >
@@ -56,4 +56,4 @@ const Catalogue = () => {
   );
 };
 
-export default Catalogue;
+export default BannerHomePage;
