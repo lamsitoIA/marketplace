@@ -5,7 +5,6 @@ import Badge from "react-bootstrap/Badge";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
-import "../components/AllproductsComponent.css";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import "../components/CardHomePage.css";

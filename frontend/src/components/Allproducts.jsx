@@ -15,13 +15,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
-import "../components/AllproductsComponent.css";//cambiar en css tambien
+/* import "../components/AllProducts.css"; */
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 
-const AllproductsComponent = ({
+const Allproducts = ({
   isHomePage,
   isFilterDescrip,
   isFilterBrand,
@@ -222,4 +222,4 @@ const AllproductsComponent = ({
   );
 };
 
-export default AllproductsComponent;
+export default Allproducts;
