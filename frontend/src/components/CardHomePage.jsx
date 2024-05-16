@@ -8,34 +8,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "../components/AllproductsComponent.css";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
-import "../components/HomePage.css";
+import "../components/CardHomePage.css";
 //import Footerlam from "../components/Footerlam.jsx";
 
-const AllproductsComponent = ({
+const CardHomePage = ({
   isHomePage,
   isFilterDescrip,
   isFilterBrand,
   numCards,
-  columnClass,
 }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
   const {userId } = useContext(UserContext);
-  const [filter, setFilter] = useState("");
-  const [brandFilter, setBrandFilter] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 999.999]);
+  const [filter] = useState("");
+  const [brandFilter] = useState("");
+  const [priceRange] = useState([0, 999.999]);
 
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value.toLowerCase());
-  };
-
-  const handlePriceChange = (_, newValue) => {
-    setPriceRange(newValue);
-  };
-
-  const handleBrandChange = (e) => {
-    setBrandFilter(e.target.value.toLowerCase());
-  };
 
   const filteredProducts = products.filter((product) => {
     const matchesFilter =
@@ -50,17 +38,6 @@ const AllproductsComponent = ({
   
     return matchesFilter && matchesBrand && matchesPriceRange;
   });
-
-  /* const clearFilters = () => {
-    setFilter("");
-    setBrandFilter("");
-    setPriceRange([0, 999.999]); // Restablecer el rango de precios
-  }; */
-  const clearFilters = () => {
-    setFilter("");
-    setBrandFilter("");
-    setPriceRange([0, 999.999]); // Restablecer el rango de precios
-  };
 
   const addFavorite = (id) => {
     const newProducts = products.map((product) => {
@@ -124,7 +101,7 @@ const AllproductsComponent = ({
                     filled={product.isFavorite}
                   />
                 </div>
-                <Card.Title>{product.name_product}</Card.Title>
+                {<Card.Title>{product.name_product}</Card.Title>}
                 <Card.Text>
                   <strong>Precio: ${product.price}</strong>
                 </Card.Text>
@@ -145,7 +122,7 @@ const AllproductsComponent = ({
                 <Button
                   className="button-ver-detalles w-100"
                   variant="dark"
-                  /* onClick={() => navigate(`/allproducts/${product.id_product})} */
+                  //onClick={() => navigate(`/allproducts/${product.id_product})} 
                   onClick={() => navigate(`/product/${product.id_product}?from=homepage`)}
                   style={{ margin: "10px", width: "10rem" }}
                 >
@@ -161,4 +138,4 @@ const AllproductsComponent = ({
   );
 };
 
-export default AllproductsComponent;
+export default CardHomePage;

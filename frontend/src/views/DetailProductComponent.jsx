@@ -2,7 +2,6 @@ import { useEffect, useContext } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { Container, Button, Badge, Stack, Image } from "react-bootstrap";
-/* import "../views/Detail_copy.css"; */
 import { FaAnglesLeft } from "react-icons/fa6";
 
 const DetailProductComponent = () => {

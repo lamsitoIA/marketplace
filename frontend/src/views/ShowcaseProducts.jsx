@@ -2,7 +2,7 @@ import React from "react";
 import AllproductsComponent from "../components/AllproductsComponent.jsx";
 import Footerlam from "../components/Footerlam.jsx";
 
-const AllProducts = () => {
+const ShowcaseProducts = () => {
   return (
     <div>
       <AllproductsComponent /* isHomePage={true} isFilterDescrip={true} */ /* columnClass="row-cols-md-3" */ /* numCards={4} */ />
@@ -11,4 +11,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default ShowcaseProducts;

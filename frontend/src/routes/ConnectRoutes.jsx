@@ -1,14 +1,14 @@
 import { Routes as Rs, Route as R } from "react-router-dom";
 import { useContext, useEffect } from "react";
 
-import Home from "../views/Home";
+import HomePage from "../views/HomePage.jsx";
 import NotFound from "../views/NotFound";
 import Login from "../views/Login";
 import Register from "../views/Register";
 import MyProfile from "../views/MyProfile";
 import MyFavorite from "../views/MyFavorite";
 import AddProduct from "../views/AddProduct";
-import AllProducts from "../views/AllProducts";
+import ShowcaseProducts from "../views/ShowcaseProducts.jsx";
 import EditProduct from "../views/EditProduct.jsx";
 import DetailProductComponent from "../views/DetailProductComponent";
 import RouteProtection from "../components/RouteProtection.jsx";
@@ -18,7 +18,7 @@ const ConnectRoutes = () => {
   const { userId, username } = useContext(UserContext);
   return (
     <Rs>
-      <R path="/" element={<Home />} />
+      <R path="/" element={<HomePage />} />
       <R path="/auth_user" element={<Login />} />
       <R path="/users" element={<Register />} />
       {/* <R element={<RouteProtection username={username}/>}> */}
@@ -28,7 +28,7 @@ const ConnectRoutes = () => {
         <R path="/modificar/:id" element={<EditProduct />} />
       {/* </R> */}
       <R path="*" element={<NotFound />} />
-      <R path="/allproducts" element={<AllProducts />} />
+      <R path="/allproducts" element={<ShowcaseProducts />} />
       {<R path="/product/:id" element={<DetailProductComponent />} />}{" "}
       {/* arreglar detailproductcomponent , es un componente no una vista */}
     </Rs>
