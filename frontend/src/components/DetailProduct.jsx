@@ -1,10 +1,10 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { Container, Button, Badge, Stack, Image } from "react-bootstrap";
 import { FaAnglesLeft } from "react-icons/fa6";
 
-const DetailProductComponent = () => {
+const DetailProduct = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const fromHomePage = location.search.includes("from=homepage");
@@ -68,4 +68,4 @@ const DetailProductComponent = () => {
   );
 };
 
-export default DetailProductComponent;
+export default DetailProduct;

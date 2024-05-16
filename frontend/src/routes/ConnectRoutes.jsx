@@ -1,5 +1,5 @@
 import { Routes as Rs, Route as R } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 
 import HomePage from "../views/HomePage.jsx";
 import NotFound from "../views/NotFound";
@@ -10,8 +10,8 @@ import MyFavorite from "../views/MyFavorite";
 import AddProduct from "../views/AddProduct";
 import ShowcaseProducts from "../views/ShowcaseProducts.jsx";
 import EditProduct from "../views/EditProduct.jsx";
-import DetailProductComponent from "../views/DetailProductComponent";
-import RouteProtection from "../components/RouteProtection.jsx";
+import DetailedProduct from "../views/DetailedProduct.jsx";
+//import RouteProtection from "../components/RouteProtection.jsx";
 import { UserContext } from "../context/UserContext";
 
 const ConnectRoutes = () => {
@@ -29,7 +29,7 @@ const ConnectRoutes = () => {
       {/* </R> */}
       <R path="*" element={<NotFound />} />
       <R path="/allproducts" element={<ShowcaseProducts />} />
-      {<R path="/product/:id" element={<DetailProductComponent />} />}{" "}
+      {<R path="/product/:id" element={<DetailedProduct />} />}{" "}
       {/* arreglar detailproductcomponent , es un componente no una vista */}
     </Rs>
   );
