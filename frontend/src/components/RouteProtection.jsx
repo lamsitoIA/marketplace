@@ -1,9 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const RouteProtection = ({
-  user,
   username,
-  children,
   redirecTo = "/auth_user",
 }) => {
   if ( !username) {

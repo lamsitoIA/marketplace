@@ -7,20 +7,17 @@ import { useContext } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
-  FaUpload,
   FaUserLarge,
   FaGlobe,
   FaCirclePlus,
-  FaPhotoFilm,
   FaHeartCircleCheck,
 } from "react-icons/fa6";
-import { FaSignOutAlt } from "react-icons/fa";
 import { UserContext } from "../context/UserContext";
 
 const Navigation = () => {
-  const { username, userId , localUserId } = useContext(UserContext);
+  const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-
+  
   //const userId = isAuthenticated && user ? user.sub : localUserId;
 console.log(user);
   let imageToShow;

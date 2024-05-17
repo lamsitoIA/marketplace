@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, Button, Container, Badge } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Card, Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Transition = () => {
   const navigate = useNavigate();
