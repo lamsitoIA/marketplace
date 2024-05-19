@@ -1,8 +1,5 @@
 import { useContext, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-//import { useAuth0 } from "@auth0/auth0-react";
-import { Container } from "react-bootstrap";
+import { Button, Form  } from "react-bootstrap";
 import { productAdd } from "./services/productAdd.js";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { productPut } from "./services/productPut.js";
