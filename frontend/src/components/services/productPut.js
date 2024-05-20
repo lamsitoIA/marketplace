@@ -26,9 +26,10 @@ export const productPut = async (id, product, token) => {
     const response = await axios.put(`${URL_API}/${id}`, product, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        Authorization: `Bearer ${token}`,
       },
     });
+    console.log( response.data)
     return response.data;
   } catch (error) {
     console.log(error);
