@@ -1,11 +1,11 @@
 import React from "react";
-import EdicionDelNuevoProduct from "../components/EdicionDelNuevoProduct.jsx";
+import EditNewProductUser from "../components/EditNewProductUser.jsx";
 import { Container } from "react-bootstrap";
-const EditProduct = () => {
+const EditNewProduct = () => {
   
   return (
     <Container>
-      <EdicionDelNuevoProduct />
+      <EditNewProductUser />
     </Container>
   );
 };

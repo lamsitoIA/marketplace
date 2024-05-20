@@ -7,14 +7,12 @@ import { productAdd } from "./services/productAdd.js";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //import google_aut from "../../src/assets/image/google_aut.png";
-import PreviewProduct from "./PreviewProduct.jsx";
+import PreviewProduct from "./PreviewProductUser.jsx";
 import "../components/AddNewProductUser.css";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 
 const AddNewProductUser = () => {
- 
-
   const { getMyProducts } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
 
@@ -77,10 +75,10 @@ const AddNewProductUser = () => {
       .then((response) => {
         setIsLoading(false);
         if (response.newProduct) {
-          setTimeout(()=> {
+          setTimeout(() => {
             getMyProducts();
             navigate(`/profile/${userId}`);
-           }, 1000 )
+          }, 1000);
         } else {
           throw Error("Error al registrar producto.");
         }

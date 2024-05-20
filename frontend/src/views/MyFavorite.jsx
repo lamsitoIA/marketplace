@@ -1,4 +1,4 @@
-import Favorite from "../components/Favorite";
+import FavoriteUser from "../components/FavoriteUser";
 import { Container } from "react-bootstrap";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
@@ -8,7 +8,7 @@ const MyFavorite = () => {
 
   return (
     <Container>
-      <Favorite userId={userId} username={username} />
+      <FavoriteUser userId={userId} username={username} />
     </Container>
   );
 };

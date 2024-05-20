@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Card, Button, Badge, Stack } from "react-bootstrap";
 import addproductimg from "../assets/image/addproduct.png"
 
-const PreviewProduct = ({ name, description, price, url_image, username, state, quantity  }) => {
+const PreviewProductUser = ({ name, description, price, url_image, username, state, quantity  }) => {
   const [image, setImage] = useState(addproductimg);
 
   useEffect(() => {
@@ -51,4 +51,4 @@ const PreviewProduct = ({ name, description, price, url_image, username, state, 
   );
 };
 
-export default PreviewProduct
+export default PreviewProductUser

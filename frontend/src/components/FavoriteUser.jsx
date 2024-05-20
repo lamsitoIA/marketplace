@@ -12,12 +12,12 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import IconHeart from "./IconHeart";
-import "./Favorite.css";
+import "./FavoriteUser.css";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 
-const Favorite = ({ userId, username }) => {
+const FavoriteUser = ({ userId, username }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
   const { url_icons } = useContext(UserContext);
@@ -129,4 +129,4 @@ const Favorite = ({ userId, username }) => {
   );
 };
 
-export default Favorite;
+export default FavoriteUser;

@@ -3,13 +3,13 @@ import { Button, Form } from "react-bootstrap";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { productPut } from "./services/productPut.js";
 import "react-toastify/dist/ReactToastify.css";
-import PreviewProduct from "./PreviewProduct.jsx";
+import PreviewProductUser from "./PreviewProductUser.jsx";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 let token = localStorage.getItem("token");
 
-const EdicionDelNuevoProduct = () => {
+const EditNewProductUser = () => {
   const { id } = useParams();
   const { getMyProducts, products } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
@@ -19,7 +19,7 @@ const EdicionDelNuevoProduct = () => {
       (product) => product.id_product === parseInt(productId)
     );
   };
-  
+
   const productDescription = findProductById(id);
 
   const [name, setName] = useState(productDescription.name_product);
@@ -90,7 +90,7 @@ const EdicionDelNuevoProduct = () => {
     <>
       <section className={`row ${isLoading ? "loading-cursor" : ""}`}>
         <div className="col-12 col-md-6">
-          <PreviewProduct
+          <PreviewProductUser
             name={name ? name : productDescription.name_product}
             description={
               description ? description : productDescription.description
@@ -227,4 +227,4 @@ const EdicionDelNuevoProduct = () => {
   );
 };
 
-export default EdicionDelNuevoProduct;
+export default EditNewProductUser;

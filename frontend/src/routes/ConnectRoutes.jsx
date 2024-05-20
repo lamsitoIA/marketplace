@@ -9,7 +9,7 @@ import MyProfile from "../views/MyProfile";
 import MyFavorite from "../views/MyFavorite";
 import AddProduct from "../views/AddProduct";
 import ShowcaseProducts from "../views/ShowcaseProducts.jsx";
-import EditProduct from "../views/EditProduct.jsx";
+import EditNewProduct from "../views/EditNewProduct.jsx";
 import DetailedProduct from "../views/DetailedProduct.jsx";
 //import RouteProtection from "../components/RouteProtection.jsx";
 import { UserContext } from "../context/UserContext";
@@ -25,7 +25,7 @@ const ConnectRoutes = () => {
         <R path="/addproduct" element={<AddProduct />} />
         <R path="/profile/:id" element={<MyProfile />} />
         <R path="/favorite/:id" element={<MyFavorite />} />
-        <R path="/modificar/:id" element={<EditProduct />} />
+        <R path="/modificar/:id" element={<EditNewProduct />} />
       {/* </R> */}
       <R path="*" element={<NotFound />} />
       <R path="/allproducts" element={<ShowcaseProducts />} />
