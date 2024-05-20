@@ -1,11 +1,8 @@
 import { useContext, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-//import { useAuth0 } from "@auth0/auth0-react";
+import { Button, Form } from "react-bootstrap";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { productPut } from "./services/productPut.js";
 import "react-toastify/dist/ReactToastify.css";
-//import google_aut from "../../src/assets/image/google_aut.png";
 import PreviewProduct from "./PreviewProduct.jsx";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
@@ -14,7 +11,6 @@ let token = localStorage.getItem("token");
 
 const EdicionDelNuevoProduct = () => {
   const { id } = useParams();
-
   const { getMyProducts, products } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
 
@@ -23,6 +19,7 @@ const EdicionDelNuevoProduct = () => {
       (product) => product.id_product === parseInt(productId)
     );
   };
+  
   const productDescription = findProductById(id);
 
   const [name, setName] = useState(productDescription.name_product);
@@ -63,8 +60,9 @@ const EdicionDelNuevoProduct = () => {
     productPut(id, nuevoProducto, token)
       .then((response) => {
         setIsLoading(false);
-        if (response.updatedProduct) { //validacion si la respuesta viene updatedProduct es verdadero. o puede ser codigo 200
-          setTimeout(() => { 
+        if (response.updatedProduct) {
+          //validacion si la respuesta viene updatedProduct es verdadero. o puede ser codigo 200
+          setTimeout(() => {
             getMyProducts();
             navigate(`/profile/${userId}`);
           }, 1000);
