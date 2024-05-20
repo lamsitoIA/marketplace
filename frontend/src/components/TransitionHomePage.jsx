@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const Transition = () => {
+const TransitionHomePage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/auth_user");
@@ -35,4 +35,4 @@ const Transition = () => {
   );
 };
 
-export default Transition;
+export default TransitionHomePage;

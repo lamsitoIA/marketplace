@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../components/BannerHomePage.jsx";
 import Footerlam from "../components/Footerlam.jsx";
-import Transition from "../components/Transition.jsx";
+import Transition from "../components/TransitionHomePage.jsx";
 import Cards from "../components/CardHomePage.jsx";
 /* import Navigation from "../components/Navigation.jsx" */
 
@@ -14,7 +14,7 @@ const HomePage = () => {
         isHomePage={false} /* aqui no se van a ver los filtros */
         isFilterDescrip={false}
         isFilterBrand={false} /* columnClass="row-cols-md-3" */
-        numCards={6}
+        numCards={20}
       />
       <Footerlam />
     </>
