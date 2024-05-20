@@ -14,7 +14,7 @@ const HomePage = () => {
         isHomePage={false} /* aqui no se van a ver los filtros */
         isFilterDescrip={false}
         isFilterBrand={false} /* columnClass="row-cols-md-3" */
-        numCards={20}
+        numCards={9}
       />
       <Footerlam />
     </>
