@@ -2,17 +2,14 @@ import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 //import { useAuth0 } from "@auth0/auth0-react";
-import { Container } from "react-bootstrap";
-import { productAdd } from "./services/productAdd.js";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { productPut } from "./services/productPut.js";
 import "react-toastify/dist/ReactToastify.css";
 //import google_aut from "../../src/assets/image/google_aut.png";
 import PreviewProduct from "./PreviewProduct.jsx";
-import "../components/AddNewProduct.css";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 let token = localStorage.getItem("token");
 
 const EdicionDelNuevoProduct = () => {

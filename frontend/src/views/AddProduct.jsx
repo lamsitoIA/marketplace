@@ -1,5 +1,5 @@
 import React from "react";
-import AddNewProduct from "../components/AddNewProduct.jsx";
+import AddNewProductUser from "../components/AddNewProductUser.jsx";
 /* import { ToastContainer } from "react-toastify"; */
 
 
@@ -7,7 +7,7 @@ const AddProduct = () => {
 
   return (
    <>
-      <AddNewProduct />
+      <AddNewProductUser />
       {/* <ToastContainer /> */}
       </>
   );

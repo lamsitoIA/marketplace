@@ -1,4 +1,4 @@
-import Gallery from "../components/Gallery";
+import PublicationUser from "../components/PublicationUser";
 import { Container } from "react-bootstrap";
 
 
@@ -8,7 +8,7 @@ const MyProfile = () => {
 
   return (
     <Container className="view_profile">
-      <Gallery />
+      <PublicationUser />
     </Container>
   );
 };

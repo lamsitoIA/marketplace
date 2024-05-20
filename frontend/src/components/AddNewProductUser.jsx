@@ -3,17 +3,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 //import { useAuth0 } from "@auth0/auth0-react";
-import { Container } from "react-bootstrap";
-import { productAdd } from "./services/productAdd";
+import { productAdd } from "./services/productAdd.js";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //import google_aut from "../../src/assets/image/google_aut.png";
-import PreviewProduct from "../components/PreviewProduct.jsx";
-import "../components/AddNewProduct.css";
+import PreviewProduct from "./PreviewProduct.jsx";
+import "../components/AddNewProductUser.css";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 
-const AddNewProduct = () => {
+const AddNewProductUser = () => {
  
 
   const { getMyProducts } = useContext(ProductContext);
@@ -234,4 +233,4 @@ const AddNewProduct = () => {
   );
 };
 
-export default AddNewProduct;
+export default AddNewProductUser;

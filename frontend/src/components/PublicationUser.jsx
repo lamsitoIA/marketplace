@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
-import "./Gallery.css";
+import "./PublicationUser.css";
 import { UserContext } from "../context/UserContext";
 import { ProductContext } from "../context/ProductContext";
 
@@ -16,7 +16,7 @@ import {
   Card,
 } from "react-bootstrap";
 
-const Gallery = () => {
+const PublicationUser = () => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
   const { userId, username, url_icons } = useContext(UserContext);
@@ -154,4 +154,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default PublicationUser;
