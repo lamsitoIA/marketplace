@@ -10,4 +10,4 @@ const EditNewProduct = () => {
   );
 };
 
-export default EditProduct;
+export default EditNewProduct;
