@@ -79,7 +79,6 @@ const PublicationUser = () => {
           </section>
           <section className="d-flex flex-wrap">
             {userProducts.map((product, i) => (
-                
               <Col key={i} sm={10} md={10} lg={4} className="mb-3">
                 <Card key={i} className="photo m-1 p-2 ">
                   <Card.Img
@@ -103,16 +102,23 @@ const PublicationUser = () => {
                     </div>
                     <Card.Title>{product.name_product}</Card.Title>
                     <Card.Text>
-                        <strong>Marca: {product.name_brand}</strong>
-                      </Card.Text>
-                      <Card.Text>
-                        <strong>Precio: ${product.price}</strong>
-                      </Card.Text>
-                      <Card.Text>{product.description}</Card.Text>
-                      <Card.Text>
-                        <strong>Publicado por: {product.username}</strong>
-                      </Card.Text>
-                      <div className="buttontobutton d-flex justify-content-center">
+                      <strong>Marca: {product.name_brand}</strong>
+                    </Card.Text>
+
+                    <Card.Text>
+                      <strong>stock: {product.quantity}</strong>
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Estado: {product.state}</strong>
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Precio: ${product.price}</strong>
+                    </Card.Text>
+
+                    <Card.Text>
+                      <strong>Publicado por: {product.username}</strong>
+                    </Card.Text>
+                    <div className="buttontobutton d-flex justify-content-center">
                       <Button
                         variant="dark"
                         className=""
@@ -139,13 +145,10 @@ const PublicationUser = () => {
                       >
                         Editar
                       </Button>
-
-
                     </div>
                   </Card.Body>
                 </Card>
               </Col>
-              
             ))}
           </section>
         </Col>
