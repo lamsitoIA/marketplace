@@ -11,12 +11,11 @@ export const productPut = async (id, product, token) => {
   try {
     const response = await axios.put(`${URL_API}/${id}`, product, {
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error("Error editing products:", error.message);
   }
 };
