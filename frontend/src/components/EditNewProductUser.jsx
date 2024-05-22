@@ -42,7 +42,7 @@ const EditNewProductUser = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const nuevoProducto = {
+    const payloadForNewProduct = {
       product: {
         name: name,
         description: description,
@@ -57,7 +57,7 @@ const EditNewProductUser = () => {
       },
     };
 
-    productPut(id, nuevoProducto, token)
+    productPut(id, payloadForNewProduct, token)
       .then((response) => {
         setIsLoading(false);
         if (response.updatedProduct) {
