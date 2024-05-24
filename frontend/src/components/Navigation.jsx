@@ -74,7 +74,7 @@ console.log(user);
                 </Nav.Link>
                 <NavDropdown title={user.name} id="basic-nav-dropdown">
                   <NavDropdown.Item as={Link} to={`/profile/${user.sub}`}>
-                    <FaUserLarge /> Mi perfil
+                    <FaUserLarge /> Mi perfile
                   </NavDropdown.Item>
 
                   <NavDropdown.Item as={Link} to={`/favorite/${user.sub}`}>
