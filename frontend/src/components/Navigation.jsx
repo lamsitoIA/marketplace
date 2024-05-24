@@ -13,6 +13,7 @@ import {
   FaHeartCircleCheck,
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
+/* Probando */
 
 const Navigation = () => {
   const { username, userId } = useContext(UserContext);
