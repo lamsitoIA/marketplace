@@ -8,6 +8,7 @@ import {
   Row,
   Col,
   Stack,
+  Spinner
 } from "react-bootstrap";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "./FormLogin.css";
@@ -23,6 +24,7 @@ const FormLogin = () => {
   const { setUserId, setUsername, setUrlIcons } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ const FormLogin = () => {
     e.preventDefault();
 
     if (email.trim() === "" || password.trim() === "") {
-      toast.warn(" 👀😢fields cannot be empty", {
+      toast.warn(" 👀😢Los campos no pueden estar vacíos", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -45,7 +47,7 @@ const FormLogin = () => {
     }
 
     if (!emailRegex.test(email)) {
-      toast.warn("😪 The email format is not correct", {
+      toast.warn("El formato del email no es correcto", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -66,11 +68,10 @@ const FormLogin = () => {
         password: password,
       },
     };
-
+    setIsLoading(true)
     const user = login(userLogin)
       .then((response) => {
         if (!response.code && response.code != 200) {
-          console.log("errorr");
           throw new Error(response.error);
         }
         console.log(" Respuesta ", response);
@@ -96,9 +97,8 @@ const FormLogin = () => {
           theme: "light",
           transition: Bounce,
         });
+        setIsLoading(false)
       });
-    console.log("user res", user);
-    console.log("url icons:", setUrlIcons);
   };
 
   return (
@@ -171,8 +171,11 @@ const FormLogin = () => {
                   className="rounded-button w-75  m-3"
                   variant="dark"
                   type="submit"
+                  disabled={isLoading}
                 >
-                  Iniciar
+                  {isLoading ? (
+                    <Spinner animation="border" size="sm"/>
+                  ): ("Iniciar")}
                 </Button>
                 <Button
                   className="rounded-button w-75 m-3"

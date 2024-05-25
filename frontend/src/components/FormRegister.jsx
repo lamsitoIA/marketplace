@@ -72,7 +72,7 @@ const FormRegister = () => {
           navigate(`/auth_user`, {
             state: { userName: response.name },
           });
-        }, 400);
+        }, 150);
       } else {
         throw new Error("Rut o Correo ya existente, intente nuevamente");
       }
