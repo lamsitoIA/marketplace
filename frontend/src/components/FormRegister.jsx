@@ -1,6 +1,14 @@
 import React, { useContext, useState } from "react";
 import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
-import { Container, Image, Button, Form, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Image,
+  Button,
+  Form,
+  Row,
+  Col,
+  Spinner,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import google_aut from "../../src/assets/image/google_aut.png";
@@ -22,6 +30,15 @@ const FormRegister = () => {
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 
+  const iconOptions = [
+    "https://cdn.icon-icons.com/icons2/1465/PNG/512/154manofficeworker2_100459.png",
+    "https://cdn.icon-icons.com/icons2/1465/PNG/512/156womanofficeworker2_100687.png",
+  ];
+
+  const handleIconClick = (url) => {
+    setUrlIcons(url);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -32,8 +49,6 @@ const FormRegister = () => {
       setIsLoading(false);
       return;
     }
-
-    
 
     // Agregar nuevo usuario
     const newUser = {
@@ -48,7 +63,7 @@ const FormRegister = () => {
     };
 
     setUsers([...users, newUser]);
-    setUrlIcons(url_icons)
+    setUrlIcons(url_icons);
 
     try {
       const response = await signup(newUser);
@@ -57,7 +72,7 @@ const FormRegister = () => {
           navigate(`/auth_user`, {
             state: { userName: response.name },
           });
-        }, 1000);
+        }, 400);
       } else {
         throw new Error("Rut o Correo ya existente, intente nuevamente");
       }
@@ -69,10 +84,9 @@ const FormRegister = () => {
 
   return (
     <>
-    
       <Container className="m-3 p-2">
-      {/* <Container className={`m-3 p-2 ${isLoading ? "loading-cursor" : ""}`}> PENDIENTE DE SOLUCIONAR MENTENER IDEA  */}
-        <Row >
+        {/* <Container className={`m-3 p-2 ${isLoading ? "loading-cursor" : ""}`}> PENDIENTE DE SOLUCIONAR MENTENER IDEA  */}
+        <Row>
           <Col sm className="d-flex justify-content-center">
             <Image
               src={mundo_cubo_copia}
@@ -80,10 +94,7 @@ const FormRegister = () => {
               className="img_lg"
             />
           </Col>
-          <Col
-            sm
-            className="d-flex flex-column align-items-center mt-5 pt-5"
-          >
+          <Col sm className="d-flex flex-column align-items-center mt-5 pt-5">
             <h3 className="display-3">¡Hola! </h3>
             <h4 className="display-4">Bienvenido </h4>
             <Button
@@ -159,29 +170,45 @@ const FormRegister = () => {
                   value={address}
                 />
               </Form.Group>
+
               <Form.Group className="mb-3" controlId="formBasicAddress">
                 <Form.Label>Avatar</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter avatar"
-                  onChange={(e) => setUrlIcons(e.target.value)}
-                  value={url_icons}
-                />
+                <div className="icon-selection">
+                  {iconOptions.map((url) => (
+                    <img
+                      key={url}
+                      src={url}
+                      alt="icon"
+                      onClick={() => handleIconClick(url)}
+                      style={{
+                        border: url === url_icons ? "2px solid blue" : "none",
+                        cursor: "pointer",
+                        margin: "5px",
+                        width: "50px",
+                        height: "50px",
+                      }}
+                    />
+                  ))}
+                </div>
               </Form.Group>
 
               <Button
                 className="boton rounded-button"
                 variant="dark mt-2"
                 type="submit"
+                disabled={isLoading}
               >
-                Registrar
+                {isLoading ? (
+                  <Spinner animation="border" size="sm" />
+                ) : (
+                  "Registrar"
+                )}
               </Button>
               {error && (
                 <div className="alert alert-danger mt-3" role="alert">
                   {error}
                 </div>
               )}
-              {isLoading && <div>Cargando...</div>}
             </Form>
           </Col>
         </Row>
