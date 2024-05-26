@@ -1,17 +1,15 @@
-const URL_API = "http://localhost:3000/api/v1/products"; 
+import axios from "axios";
+const URL_API = "http://localhost:3000/api/v1/products";
 
-
-export const productDelete = async (id,token) => {
-  console.log("token 2: ",token)
-    const response = await fetch( `${URL_API}/${id}`, {
-      method: "DELETE",
+export const productDelete = async (id, token) => {
+  try {
+    const response = await axios.delete(`${URL_API}/${id}`, {
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+ token,
+        Authorization: `Bearer ${token}`,
       },
-      //body: JSON.stringify(product),
     });
-    const data = await response.json();
-    console.log("data", data)
-    return data;
+    return response.status;
+  } catch (error) {
+    console.error("Error deleting product: ", error.message);
+  }
 };

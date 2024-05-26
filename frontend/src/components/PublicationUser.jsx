@@ -18,8 +18,9 @@ import {
 
 const PublicationUser = () => {
   const navigate = useNavigate();
-  const { products, setProducts } = useContext(ProductContext);
+  const { products, setProducts, deleteProduct } = useContext(ProductContext);
   const { userId, username, url_icons } = useContext(UserContext);
+  let token = localStorage.getItem("token");
 
   const userProducts = products.filter((product) => product.id_user === userId);
 
@@ -122,11 +123,10 @@ const PublicationUser = () => {
                       <Button
                         variant="dark"
                         className=""
-                        onClick={() =>
-                          navigate(
-                            `/product/${product.id_product}?from=allproducts-details`
-                          )
-                        }
+                        onClick={() => {
+                          deleteProduct(product.id_product, token);
+                          console.log("boton eliminar");
+                        }}
                         style={{ margin: "10px", width: "10rem" }}
                       >
                         Eliminar
@@ -138,7 +138,7 @@ const PublicationUser = () => {
                         onClick={() =>
                           navigate(
                             `/modificar/${product.id_product}`
-                           /*  ?from=allproducts-details */
+                            /*  ?from=allproducts-details */
                           )
                         }
                         style={{ margin: "10px", width: "10rem" }}

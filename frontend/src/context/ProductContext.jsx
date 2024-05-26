@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { productsGet } from "../components/services/productGet.js";
 import { productGetById } from "../components/services/productGetById.js";
+import { productDelete } from "../components/services/productDelete.js";
 
 export const ProductContext = createContext();
 
@@ -26,6 +27,16 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+
+  const deleteProduct = async (productId , token) => {
+    try {
+      await productDelete(productId , token)
+      getMyProducts()
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  }
+
   useEffect(() => {
     getMyProducts();
   }, []);
@@ -38,6 +49,7 @@ export const ProductProvider = ({ children }) => {
         setProducts,
         getMyProducts,
         getProductById,
+        deleteProduct,
       }}
     >
       {children}
