@@ -4,6 +4,7 @@ import {
   getProductById,
   updateProduct,
   deleteProduct,
+  setFavorite
 } from "../models/productModel.js";
 import { findError } from "../utils/utils.js";
 
@@ -61,6 +62,28 @@ export const updateProducts = async (req, res) => {
     res.status(200).json({ updatedProduct: updatedProduct });
   } catch (error) {
     console.log(error);
+    const errorFound = findError(error.code);
+    return res
+      .status(errorFound[0]?.status)
+      .json({ error: errorFound[0]?.message });
+  }
+};
+
+//patch favorite
+export const updateFavorite = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isFavorite } = req.body;
+    console.log("Received PATCH request:", { id, isFavorite });
+    const updatedProduct = await setFavorite(id, isFavorite);
+
+    if (updatedProduct.rowCount === 0) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    console.log("Product updated successfully:", updatedProduct.rows[0]);
+    res.status(200).json({ product: updatedProduct.rows[0] });
+  } catch (error) {
+    console.error("Error updating favorite status:", error);
     const errorFound = findError(error.code);
     return res
       .status(errorFound[0]?.status)

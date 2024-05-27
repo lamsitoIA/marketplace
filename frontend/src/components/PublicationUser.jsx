@@ -18,13 +18,14 @@ import {
 
 const PublicationUser = () => {
   const navigate = useNavigate();
-  const { products, setProducts, deleteProduct } = useContext(ProductContext);
+  const { products, setProducts, deleteProduct, addFavorite } = useContext(ProductContext);
   const { userId, username, url_icons } = useContext(UserContext);
   let token = localStorage.getItem("token");
-
+console.log("Token", token);
   const userProducts = products.filter((product) => product.id_user === userId);
 
-  const addFavorite = (id) => {
+
+  /* const addFavorite = (id) => {
     const newProducts = products.map((product) => {
       if (product.id_product === id) {
         return {
@@ -35,7 +36,7 @@ const PublicationUser = () => {
       return product;
     });
     setProducts(newProducts);
-  };
+  }; */
 
   return (
     <Container>
@@ -94,7 +95,7 @@ const PublicationUser = () => {
                   <Card.Body>
                     <div
                       className="icon-heart-button"
-                      onClick={() => addFavorite(product.id_product)}
+                      onClick={() => addFavorite(product.id_product, !product.isFavorite, token)}
                     >
                       <IconHeart
                         className="border_heart"
@@ -125,7 +126,6 @@ const PublicationUser = () => {
                         className=""
                         onClick={() => {
                           deleteProduct(product.id_product, token);
-                          console.log("boton eliminar");
                         }}
                         style={{ margin: "10px", width: "10rem" }}
                       >

@@ -87,6 +87,17 @@ export const updateProduct = async (
   return response.rows[0];
 };
 
+//update
+export const setFavorite = async (id, isFavorite) => {
+  const SQLquery = {
+    text: "UPDATE products SET isFavorite = $1 WHERE id_product = $2 RETURNING *",
+    values: [isFavorite, id],
+  };
+  console.log("Executing query:", SQLquery);
+  const response = await pool.query(SQLquery);
+  return response;
+};
+
 //delete
 export const deleteProduct = async (id) => {
   const SQLquery = {

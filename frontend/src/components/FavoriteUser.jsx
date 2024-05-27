@@ -17,12 +17,16 @@ import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 
+
+
 const FavoriteUser = ({ userId, username }) => {
   const navigate = useNavigate();
-  const { products, setProducts } = useContext(ProductContext);
+  const { products, addFavorite } = useContext(ProductContext);
   const { url_icons } = useContext(UserContext);
+  let token = localStorage.getItem("token")
+  console.log("token", token);
 
-  const removeFavorite = (id) => {
+  /* const removeFavorite = (id) => {
     const newProducts = products.map((product) => {
       if (product.id_product === id) {
         return {
@@ -33,7 +37,7 @@ const FavoriteUser = ({ userId, username }) => {
       return product;
     });
     setProducts(newProducts);
-  };
+  }; */
 
   const productsLiked = products.filter(
     (filters) => filters.isFavorite === true
@@ -109,7 +113,7 @@ const FavoriteUser = ({ userId, username }) => {
                     <Card.Footer className="text-muted p-2">
                       <div
                         className="icon-heart-button "
-                        onClick={() => removeFavorite(product.id_product)}
+                        onClick={() => addFavorite(product.id_product, !product.isFavorite, token)}
                       >
                         <IconHeart
                           className="border_heart"

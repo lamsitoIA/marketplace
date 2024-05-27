@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { productsGet } from "../components/services/productGet.js";
 import { productGetById } from "../components/services/productGetById.js";
 import { productDelete } from "../components/services/productDelete.js";
+import { productFavorite } from "../components/services/productFavorite.js";
 
 export const ProductContext = createContext();
 
@@ -17,6 +18,31 @@ export const ProductProvider = ({ children }) => {
       console.error("Error fetching products:", error);
     }
   };
+
+  const addFavorite = async (id, isFavorite , token) => {
+    try {
+      const newProducts = products.map((product) => {
+        if (product.id_product === id) {
+          const updatedProduct = {
+            ...product,
+            isFavorite: !product.isFavorite,
+          };
+  
+          // Llamada a la API para actualizar el estado de "favorito" en la base de datos
+          productFavorite(id, updatedProduct.isFavorite, token);
+  
+          return updatedProduct;
+        }
+        return product;
+      });
+  
+      setProducts(newProducts);
+    } catch (error) {
+      console.error("Error updating favorite status:", error);
+    }
+  };
+
+  
 
   const getProductById = async (id) => {
     try {
@@ -50,6 +76,7 @@ export const ProductProvider = ({ children }) => {
         getMyProducts,
         getProductById,
         deleteProduct,
+        addFavorite,
       }}
     >
       {children}
