@@ -2,7 +2,7 @@ import { byEmail } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { findError } from "../utils/utils.js";
-
+/* vendedor de lapiz y jean pasando lomotoro ala coño he la madre*/
 const loginUser = async (req, res) => {
   const { user } = req.body;
 
