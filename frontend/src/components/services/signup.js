@@ -9,6 +9,10 @@ export const signup = async (post) => {
     return response.data;
   } catch (error) {
     console.error("Error signup user:", error.message);
+    return {
+      userCreated: false,
+      error: error.response && error.response.data ? error.response.data.error : error.message
+    };
   }
 };
 

@@ -17,7 +17,7 @@ import { signup } from "./services/signup.js";
 import { UserContext } from "../context/UserContext";
 
 const FormRegister = () => {
-  const { users, setUsers } = useContext(UserContext);
+  /* const { users, setUsers } = useContext(UserContext); */
   const [name, setName] = useState("");
   const [rut, setRut] = useState("");
   const [email, setEmail] = useState("");
@@ -53,17 +53,17 @@ const FormRegister = () => {
     // Agregar nuevo usuario
     const newUser = {
       user: {
-        name: name,
-        rut: rut,
-        email: email,
-        password: password,
-        address: address,
-        url_icons: url_icons,
+        name,
+        rut,
+        email,
+        password,
+        address,
+        url_icons,
       },
     };
 
-    setUsers([...users, newUser]);
-    setUrlIcons(url_icons);
+   /*  setUsers([...users, newUser]);
+    setUrlIcons(url_icons); */
 
     try {
       const response = await signup(newUser);
@@ -74,10 +74,16 @@ const FormRegister = () => {
           });
         }, 150);
       } else {
-        throw new Error("Rut o Correo ya existente, intente nuevamente");
+        if(response.error === "Has a unique constraint and cannot be repeated in the database"){
+          setError('Rut o Correo ya existente, intente nuevamente');
+          setIsLoading(false);
+        }else{
+          setError('Ocurrió un error, intente nuevamente');
+          setIsLoading(false);
+        }
       }
     } catch (error) {
-      setError("Rut o Correo Electronico ya existente");
+      setError(error.message);
       setIsLoading(false);
     }
   };
