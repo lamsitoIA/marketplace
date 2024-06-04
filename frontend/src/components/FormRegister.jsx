@@ -43,12 +43,15 @@ const FormRegister = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Validación de campos
+    // Validación de campos, aca validamos en el front tambien, la idea es hacerlo desde el backend y el frontend, asique la idea es tenerlo en ambas parte
     if (!name || !rut || !email || !password || !address || !url_icons) {
       setError("Todos los campos son obligatorios. ");
       setIsLoading(false);
       return;
     }
+    //validar que sea un rut ingresado correctamente con puntos y guion
+    // validar que la direccion no sea mas larga de 50 caracteres
+    // validar que el name no sea mas largo de 50 caracteres
 
     // Agregar nuevo usuario
     const newUser = {
@@ -75,7 +78,11 @@ const FormRegister = () => {
         if(response.error === "Has a unique constraint and cannot be repeated in the database"){
           setError('Rut o Correo ya existente, intente nuevamente');
           setIsLoading(false);
-        }else{
+        }else if(response.error === "Invalid user data" || response.error === "Invalid user data format"){
+          setError('Todos los campos son obligatorios')//aca lo manejamos la respuesta que nos entrega el backend
+          setIsLoading(false)
+        }
+        else{
           setError('Ocurrió un error, intente nuevamente');
           setIsLoading(false);
         }
