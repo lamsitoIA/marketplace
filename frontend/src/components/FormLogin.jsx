@@ -8,97 +8,61 @@ import {
   Row,
   Col,
   Stack,
-  Spinner
+  Spinner,
 } from "react-bootstrap";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "./FormLogin.css";
-import { ToastContainer, toast, Bounce } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
 import { login } from "../components/services/loginService.js";
 import { UserContext } from "../context/UserContext.jsx";
 import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
 
-const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
   const { setUserId, setUsername, setUrlIcons } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    if (email.trim() === "" || password.trim() === "") {
-      toast.warn(" 👀😢Los campos no pueden estar vacíos", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
-      return;
+    setError("");
+    setIsLoading(true);
+    /* Aqui si la clave es igual al valor entonces no es necesario que sea email : email , puede ser solo email. */
+    if(!email || !password){
+      setError("los campos no pueden estar vacios")
     }
-
-    if (!emailRegex.test(email)) {
-      toast.warn("El formato del email no es correcto", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
-
-      return;
-    }
-
     const userLogin = {
       user: {
         email: email,
         password: password,
       },
     };
-    setIsLoading(true)
-    const user = login(userLogin)
-      .then((response) => {
-        if (!response.code && response.code != 200) {
-          throw new Error(response.error);
-        }
-        console.log(" Respuesta ", response);
-        setUserId(response.id_user);
-        setUsername(response.name);
-        setUrlIcons(response.url_icons);
-        localStorage.setItem("token", response.token);
-        console.log("token response: ", response.token)
-        console.log("token: ", localStorage.getItem("token"))
-        navigate(`/profile/${response.id_user}`, {
-          state: { userName: response.name },
-        });
-      })
-      .catch((error) => {
-        toast.error("👀😢" + error, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-        setIsLoading(false)
-      });
+
+    try {
+      const response = await login(userLogin);
+      if (!response || response.code !== 200) { // !response quiere decir que no viene nada en el cuerpo que viene vacio y response.code !== 200 estamos diciendo que si el codigo es diferente a 200
+        throw new Error(response ? response.error : "Unexpected error"); // aca lanzamos un error y decimos si response  es true es verdadero, entonces tirame el error capturado que envia el servidor y si response es false osea response no tiene nada entonces lanzamae unexpected error
+      }           //si el error se captura en esponse.error entonces se va directo al catch a las validaciones.
+      setUserId(response.id_user);
+      setUsername(response.name);
+      setUrlIcons(response.url_icons);
+      localStorage.setItem("token", response.token);
+      navigate(`/profile/${response.id_user}`);
+    } catch (error) {
+      const errorMessage = error.message
+      if (errorMessage === "None of the Fields can be empty") {
+        setError("Los campos no pueden estar vacíos");
+      } else if (errorMessage === "Username does not exist" || errorMessage === "Invalid password") {
+        setError("Correo o contraseña incorrecta");
+      } else {
+        setError("Error inesperado, por favor intente de nuevo");
+      }
+    } finally {
+      setIsLoading(false); //el finally basicamente es para que el codigo no siga vagabundeando por decirlo asi, en caso de que no se cumpla nada.
+    }
   };
 
   return (
@@ -174,8 +138,10 @@ const FormLogin = () => {
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    <Spinner animation="border" size="sm"/>
-                  ): ("Iniciar")}
+                    <Spinner animation="border" size="sm" />
+                  ) : (
+                    "Iniciar"
+                  )}
                 </Button>
                 <Button
                   className="rounded-button w-75 m-3"
@@ -188,11 +154,15 @@ const FormLogin = () => {
                   Registrar
                 </Button>
               </Stack>
+              {error && ( // Renderiza el mensaje de error si existe
+                <div className="alert alert-danger mt-3" role="alert">
+                  {error}
+                </div>
+              )}
             </Form>
           </Col>
         </Row>
       </Container>
-      <ToastContainer />
     </>
   );
 };

@@ -62,8 +62,6 @@ const FormRegister = () => {
       },
     };
 
-   /*  setUsers([...users, newUser]);
-    setUrlIcons(url_icons); */
 
     try {
       const response = await signup(newUser);

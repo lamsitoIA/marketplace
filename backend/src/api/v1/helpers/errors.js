@@ -1,5 +1,5 @@
 const ERRORS = [
-  { code: "23502" , status: 400, message: "Ninguno de los Campos no pueden estar vacios"},
+  { code: "23502" , status: 400, message: "None of the Fields can be empty"},
 { code: "22P02" , status: 400, message: "el tipo de dato no corresponde, bad request"},
 { code : "2201W" , status : 400, message : "El parámetro /limit/ debe ser un número entero positivo."},
 { code : "42601" , status : 400, message : "Error de sintaxis"},
