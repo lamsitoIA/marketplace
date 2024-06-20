@@ -11,12 +11,64 @@ import {
   FaGlobe,
   FaCirclePlus,
   FaHeartCircleCheck,
+  FaCartPlus,
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
+import { CartContext } from "../context/cartContext";
 
 const Navigation = () => {
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
+  const { cart } = useContext(CartContext);
+  console.log("cart de navigation",cart)
+  /* const totalPrice = cart.reduce((total, product) => total + product.quantity * product.price, 0); */
+ /*  let totalValue;
+
+if (Array.isArray(cart)) {
+    // cart is an array, you can use reduce
+    totalValue = cart.reduce((total, current) => {
+        const currentItemValue = current.price * current.quantity;
+        return total + currentItemValue;
+    }, 0.0);
+} else {
+    // cart is not an array, handle the error
+    console.error("cart is not an array");
+    totalValue = 0; // Set a default value for totalValue
+}
+
+// Now you can use totalValue outside the conditional statement
+console.log("Total value:", totalValue);
+
+ */
+/* let totalValue;
+
+if (Array.isArray(cart)) {
+    // El carrito es una matriz, puedes usar reduc.
+    totalValue = cart.reduce((total, current) => {
+        const currentItemValue = current.price * current.quantity;
+        return total + currentItemValue;
+    }, 0.0);
+} else if (typeof cart === 'object') {
+    // El carrito es un objeto, manéjelo en consecuencia.
+    console.error("cart is an object");
+} else if (cart === null || cart === undefined) {
+    // el carrito es nulo o no está definido, manéjelo en consecuencia
+    console.error("cart is null or undefined");
+    totalValue = 0; // Establecer un valor predeterminado para totalValue
+} else {
+    // El carrito es otra cosa, manéjelo en consecuencia.
+    console.error("cart is not an array, object, null, or undefined");
+    totalValue = 0; // Set a default value for totalValue
+}
+
+// Now you can use totalValue outside the conditional statement
+console.log("Total value:", totalValue); */
+
+const totalValue = Object.values(cart).reduce((total, current) => {//convierte el objeto en una matriz de valores
+  return total + current.quantity;
+
+}, 0);
+console.log(typeof totalValue)
   
   //const userId = isAuthenticated && user ? user.sub : localUserId;
 console.log(user);
@@ -156,7 +208,13 @@ console.log(user);
                       style={{color: "black" }}
                     />{""} Cerrar sesión
                   </NavDropdown.Item>
+                  
                 </NavDropdown>
+
+                <Nav.Link>
+                  <FaCartPlus />
+                  <span id="total" className="m-4">$:{totalValue}</span>
+                </Nav.Link>
               </>
             ) : (
               <>

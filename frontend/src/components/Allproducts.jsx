@@ -20,6 +20,7 @@ import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+import { CartContext } from "../context/cartContext";
 
 const Allproducts = ({
   isHomePage,
@@ -30,6 +31,7 @@ const Allproducts = ({
 }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
+  const{addProductToCart} = useContext(CartContext);
   const { userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
@@ -207,6 +209,18 @@ const Allproducts = ({
                         style={{ margin: "10px", width: "10rem" }}
                       >
                         Ver detalles
+                      </Button>
+                      <Button
+                        variant="dark"
+                        className=""
+                        onClick={() =>
+                          (
+                            addProductToCart(product)
+                          )
+                        }
+                        style={{ margin: "10px", width: "10rem" }}
+                      >
+                        agregar Carrito
                       </Button>
                     </div>
 
