@@ -64,11 +64,12 @@ if (Array.isArray(cart)) {
 // Now you can use totalValue outside the conditional statement
 console.log("Total value:", totalValue); */
 
-const totalValue = Object.values(cart).reduce((total, current) => {//convierte el objeto en una matriz de valores
-  return total + current.quantity;
+const totalValue = Object.values(cart).reduce((total, current) => {
+  return total + (current.quantity * current.price);
 
 }, 0);
-console.log(typeof totalValue)
+
+console.log("valor de totalValue: " + typeof totalValue)
   
   //const userId = isAuthenticated && user ? user.sub : localUserId;
 console.log(user);
