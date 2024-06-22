@@ -13,16 +13,17 @@ export const CartProvider = ({ children }) => {
 
  const addProductToCart = async (productId, quantity) => {
   try {
-      const product = await /* getCartAll */ cartAdd(productId);
+      const product = await/*  getCartAll */ cartAdd (productId);
       if (product) {
           const newCart = [...cart]; // Copia del array cart
           const existingProductIndex = newCart.findIndex(item => item.id === productId);
-          if (existingProductIndex !== -1) {
-              newCart[existingProductIndex].quantity += quantity;
+          if (existingProductIndex !== -1) {//Valor de -1: En JavaScript, es un valor especial que indica que un elemento no ha sido encontrado 
+            //en un conjunto utilizando el método .-1(findIndex)
+              newCart[existingProductIndex].quantity += quantity;//Si el producto ya está en la cesta, se incrementa su cantidad
           } else {
-              newCart.push({ id: productId, name: product.name, price: product.price, quantity });
+              newCart.push({ id: productId, name: product.name, price: product.price, quantity });// Si el producto no está en la cesta, se agrega
           }
-          setCart(newCart);
+          setCart(newCart);// Se actualiza el estado de la cesta
           console.log("newCart desde context", newCart)
       }
   } catch (error) {

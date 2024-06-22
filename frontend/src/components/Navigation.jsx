@@ -213,7 +213,7 @@ console.log(user);
                 </NavDropdown>
 
                 <Nav.Link>
-                  <FaCartPlus />
+                  <FaCartPlus  title="Carrito de Compra"/>
                   <span id="total" className="m-4">$:{totalValue}</span>
                 </Nav.Link>
               </>
