@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
@@ -17,56 +17,41 @@ const CardHomePage = ({
   numCards,
 }) => {
   const navigate = useNavigate();
-  const { products, setProducts } = useContext(ProductContext);
-  const {userId } = useContext(UserContext);
+  const {
+    products,
+    getMyProducts,
+    getFavorites,
+    productFav,
+    isFavorite,
+    handleFavoriteClick,
+  } = useContext(ProductContext);
+
+  let token = localStorage.getItem("token");
+
+  const { userId } = useContext(UserContext);
   const [filter] = useState("");
   const [brandFilter] = useState("");
   const [priceRange] = useState([0, 999.999]);
-
 
   const filteredProducts = products.filter((product) => {
     const matchesFilter =
       product.name_product.toLowerCase().includes(filter) ||
       product.description.toLowerCase().includes(filter);
-  
-    const matchesBrand = !brandFilter || product.id_brand === parseInt(brandFilter);
-  
+
+    const matchesBrand =
+      !brandFilter || product.id_brand === parseInt(brandFilter);
+
     const matchesPriceRange =
       parseFloat(product.price) >= priceRange[0] &&
       parseFloat(product.price) <= priceRange[1];
-  
+
     return matchesFilter && matchesBrand && matchesPriceRange;
   });
 
-  const addFavorite = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id_product === id) {
-        return {
-          ...product,
-          isFavorite: !product.isFavorite,
-        };
-      }
-      return product;
-    });
-    setProducts(newProducts);
-  };
-
-  const addFavoriteOnClick = (id) => {
-    if (!userId) {
-      toast.error("Debes iniciar sesión para agregar a favoritos", {
-        position: "bottom-right",
-        autoClose: 1900,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-    } else {
-      addFavorite(id);
-    }
-  };
+  useEffect(() => {
+    getMyProducts();
+    getFavorites(token);
+  }, [productFav]);
 
   return (
     <div className="container">
@@ -91,13 +76,31 @@ const CardHomePage = ({
             <Card style={{ width: "18rem" }} className="h-100 mx-auto">
               <Card.Img variant="top" src={product.url_image} />
               <Card.Body>
-              <div // Botón del corazón
+                <div // Botón del corazón
                   className="icon-heart-button" // Estilo CSS opcional
-                  onClick={() => addFavoriteOnClick(product.id_product)} // Llama a la función addFavoriteOnClick
+                  onClick={() => {
+                    if (!userId) {
+                      toast.error(
+                        "Debes iniciar sesión para agregar a favoritos",
+                        {
+                          position: "bottom-right",
+                          autoClose: 1900,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                          theme: "dark",
+                        }
+                      );
+                    } else {
+                      handleFavoriteClick(product.id_product, userId, token);
+                    }
+                  }}
                 >
                   <IconHeart
                     className="border_heart"
-                    filled={product.isFavorite}
+                    filled={isFavorite(product.id_product)}
                   />
                 </div>
                 {<Card.Title>{product.name_product}</Card.Title>}
@@ -121,8 +124,9 @@ const CardHomePage = ({
                 <Button
                   className="button-ver-detalles w-100"
                   variant="dark"
-                  //onClick={() => navigate(`/allproducts/${product.id_product})} 
-                  onClick={() => navigate(`/product/${product.id_product}?from=homepage`)}
+                  onClick={() =>
+                    navigate(`/product/${product.id_product}?from=homepage`)
+                  }
                   style={{ margin: "10px", width: "10rem" }}
                 >
                   Ver detalles

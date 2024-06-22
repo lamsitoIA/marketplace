@@ -107,3 +107,35 @@ export const deleteProduct = async (id) => {
   const response = await pool.query(SQLquery);
   return response.rowCount;
 };
+
+//get favorites 
+export const getAllProductFavorite = async (id_user) => {
+  const SQLquery = {
+    text: "SELECT p.id_product, p.name AS name_product, p.description, p.price, p.quantity, p.state, p.isFavorite, p.url_image, p.id_user, u.name AS username, p.id_categories, c.name AS category, p.id_brand, b.name AS name_brand FROM products AS p JOIN categories AS c ON p.id_categories = c.id_categories JOIN brands AS b ON b.id_brand = p.id_brand JOIN users AS u ON u.id_user = p.id_user JOIN user_favorite AS uf ON p.id_product = uf.id_product WHERE uf.id_user = $1",
+    values: [id_user],
+  };
+  const response = await pool.query(SQLquery);
+  return response.rows;
+};
+
+//post favorite
+export const addUserFavoriteList = async ({ id_user, id_product }) => {
+  const SQLquery = {
+    text: "INSERT INTO user_favorite (id_user , id_product) VALUES ($1,$2) RETURNING *",
+    values: [id_user, id_product],
+  };
+  const response = await pool.query(SQLquery);
+  return response.rows[0];
+};
+
+
+//delete favorite
+export const deleteFavoriteProduct = async (id) => {
+  const SQLquery = {
+    text: "DELETE FROM user_favorite WHERE id_product = $1",
+    values: [id],
+  };
+  const response = await pool.query(SQLquery);
+  return response.rowCount;
+};
+

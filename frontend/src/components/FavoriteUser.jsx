@@ -1,47 +1,23 @@
-import { useContext } from "react";
-import {
-  Container,
-  Image,
-  Button,
-  Form,
-  Row,
-  Col,
-  Stack,
-  Card,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { useContext, useEffect } from "react";
+import { Container, Image, Button, Row, Col, Card } from "react-bootstrap";
 import IconHeart from "./IconHeart";
 import "./FavoriteUser.css";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 
-
-
 const FavoriteUser = ({ userId, username }) => {
+  let token = localStorage.getItem("token");
+
   const navigate = useNavigate();
-  const { products, addFavorite } = useContext(ProductContext);
   const { url_icons } = useContext(UserContext);
-  let token = localStorage.getItem("token")
-  console.log("token", token);
 
-  /* const removeFavorite = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id_product === id) {
-        return {
-          ...product,
-          isFavorite: !product.isFavorite,
-        };
-      }
-      return product;
-    });
-    setProducts(newProducts);
-  }; */
+  const { getFavorites, deleteProductFromFavorites, productsFav, isFavorite } =
+    useContext(ProductContext);
 
-  const productsLiked = products.filter(
-    (filters) => filters.isFavorite === true
-  );
+  useEffect(() => {
+    getFavorites(token);
+  }, []);
 
   return (
     <Container>
@@ -87,7 +63,7 @@ const FavoriteUser = ({ userId, username }) => {
 
           <Row sm={10} className="text-center">
             <section className="d-flex flex-wrap">
-              {productsLiked.map((product, i) => (
+              {productsFav.map((product, i) => (
                 <div key={i} className=" m-2 d-flex align-items-stretch">
                   <Card key={i} style={{ width: "16rem" }}>
                     <Card.Img
@@ -113,14 +89,16 @@ const FavoriteUser = ({ userId, username }) => {
                     <Card.Footer className="text-muted p-2">
                       <div
                         className="icon-heart-button "
-                        onClick={() => addFavorite(product.id_product, !product.isFavorite, token)}
+                        onClick={() =>
+                          deleteProductFromFavorites(product.id_product, token)
+                        }
                       >
                         <IconHeart
                           className="border_heart"
-                          filled={product.isFavorite}
+                          filled={isFavorite(product.id_product)}
                         />
                       </div>
-                      <strong> Vendedor:  {product.username} </strong>
+                      <strong> Vendedor: {product.username} </strong>
                     </Card.Footer>
                   </Card>
                 </div>
