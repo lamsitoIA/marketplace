@@ -20,6 +20,7 @@ import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+import { CartContext } from "../context/cartContext";
 
 const Allproducts = ({
   isHomePage,
@@ -30,7 +31,11 @@ const Allproducts = ({
 }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
+  const{addProductToCart, cart} = useContext(CartContext);
+  console.log("cart desde allproduct", cart)
   const { userId } = useContext(UserContext);
+  console.log("userId de allproduct", userId);
+  
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
   const [priceRange, setPriceRange] = useState([0, 999.999]);
@@ -98,7 +103,8 @@ const Allproducts = ({
       //navigate(`/profile/${userId}`); // Navegar a la página de perfil después de agregar a favoritos
     }
   };
-
+  
+  
   return (
     <>
       <Container>
@@ -190,6 +196,7 @@ const Allproducts = ({
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text>
                         <strong>Publicado por: {product.username}</strong>
+                        <strong>Publicado por: {product.id_product}</strong>
                       </Card.Text>
                       <div>
                         <Badge variant="dark">{product.name}</Badge>
@@ -207,6 +214,21 @@ const Allproducts = ({
                         style={{ margin: "10px", width: "10rem" }}
                       >
                         Ver detalles
+                      </Button>
+                      <Button
+                        variant="dark"
+                        className=""
+                        onClick={() =>
+                          (
+                            
+                            addProductToCart(product.id_product, userId)
+
+                            //addProductToCart(product, userId)
+                          )
+                        }
+                        style={{ margin: "10px", width: "10rem" }}
+                      >
+                        agregar Carrito
                       </Button>
                     </div>
 

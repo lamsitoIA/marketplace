@@ -8,12 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 /* import "react-toastify/dist/ReactToastify.css" */
 import { ProductProvider } from "./context/ProductContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
+import { CartProvider } from "./context/cartContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <ProductProvider>
         <UserProvider>
+          <CartProvider>
           {/* <StoreProvider> */}
             <Auth0Provider
               domain="dev-iw8elxagxdwxybue.us.auth0.com" /* domain y clientid tienen que estar en .env y luego pasarlo aca */ /* dev-iw8elxagxdwxybue.us.auth0.com   deployment */   /* dev-skbt4lrbmrsq7v5k.us.auth0.com */
@@ -25,6 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <App />
             </Auth0Provider>
           {/* </StoreProvider> */}
+          </CartProvider>
         </UserProvider> 
       </ProductProvider>
     </BrowserRouter>
