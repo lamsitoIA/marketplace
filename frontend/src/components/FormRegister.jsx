@@ -14,6 +14,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "./FormLogin.css";
 import { signup } from "./services/signup.js";
+import {signupAuthGoogle} from "./services/signupAuthGoogle.js"
 import { UserContext } from "../context/UserContext";
 
 const FormRegister = () => {
@@ -26,6 +27,7 @@ const FormRegister = () => {
   const [error, setError] = useState("");
   const [url_icons, setUrlIcons] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+   const { isAuthenticated, user, logout } = useAuth0();
 
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
@@ -229,3 +231,28 @@ const FormRegister = () => {
 };
 
 export default FormRegister;
+
+/* 
+const handleGoogleSignup = async () => {
+  try {
+    await loginWithRedirect({
+      screen_hint: "signup",
+      connection: "google-oauth2",
+    });
+    if (isAuthenticated) {
+      const newUser = {
+        name: user.name,
+        rut: "0",  // Asumiendo que no tienes RUT de Google
+        email: user.email,
+        password: "0",  // Puedes asignar una contraseña predeterminada
+        address: "0",  // Asumiendo que no tienes dirección de Google
+        url_icons: user.picture,
+      };
+      console.log("pase por aqui ")
+
+      await signupAuthGoogle(newUser);
+    }
+  } catch (error) {
+    console.error("Error during Google signup:", error);
+  }
+}; */
