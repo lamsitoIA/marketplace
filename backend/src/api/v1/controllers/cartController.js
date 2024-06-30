@@ -13,16 +13,24 @@ import { findError } from "../utils/utils.js";
 export const getAllCart = async (req, res) =>{
  
     try {
-      const {idUser} = req.params
-      console.log("req.params",req.params ) 
+      const { id_user } = req.params;
+      if (id_user !== undefined) {
+        // Usa id_user aquí
+        console.log("id_user pruebas", id_user)
+      } else {
+        console.log ("Maneja el caso cuando id_user no está definido")
+      }
+      
+
+      console.log("req.params de controller",req.params ) 
       //const idUser = req.user.id_user;
-      console.log("idUser",idUser)
+      console.log("userId desde controller",id_user)
       //validar iduser
-      if (!idUser) {
+      if (!id_user) {
         return res.status(401).json({ error: 'No tienes permisos para realizar esta acción' });
       }
 
-      const allproductsCart = await AllCart(idUser);
+      const allproductsCart = await AllCart(id_user);
       console.log("allproductsCart",allproductsCart)
     
      /*  if (allproductsCart.rowcount ===0){
@@ -50,9 +58,11 @@ export const getAllCart = async (req, res) =>{
 //create cart
 export const addtoCart = async (req, res) => {
   try {
-    const { id_user, id_product, quantity } = req.body; // Obtener los datos del producto y la cantidad a agregar
+    const { id_user } = req.params; // Obtener el id del usuario
+    const {id_product, quantity } = req.body; // Obtener los datos del producto y la cantidad a agregar
+    console.log("req.bodyPrueba",req.body);
     const createdCartItem = await createCart(
-      id_user,
+     id_user,
       id_product,
       quantity
     ); // Llamar a la función para crear el producto en la base de datos

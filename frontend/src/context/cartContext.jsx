@@ -11,9 +11,11 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
  // const { getMyProducts } = useContext(ProductContext);
 
- const addProductToCart = async (productId, quantity) => {
+ const addProductToCart = async (productId, quantity, id_user  ) => {
   try {
-      const product = await/*  getCartAll */ cartAdd (productId);
+    console.log("id_user addProductTocart",id_user)
+    
+      const product = await cartAdd(id_user);
       if (product) {
           const newCart = [...cart]; // Copia del array cart
           const existingProductIndex = newCart.findIndex(item => item.id === productId);
@@ -21,7 +23,7 @@ export const CartProvider = ({ children }) => {
             //en un conjunto utilizando el método .-1(findIndex)
               newCart[existingProductIndex].quantity += quantity;//Si el producto ya está en la cesta, se incrementa su cantidad
           } else {
-              newCart.push({ id: productId, name: product.name, price: product.price, quantity });// Si el producto no está en la cesta, se agrega
+              newCart.push({ id: productId, quantity, id_user:id_user });// Si el producto no está en la cesta, se agrega
           }
           setCart(newCart);// Se actualiza el estado de la cesta
           console.log("newCart desde context", newCart)

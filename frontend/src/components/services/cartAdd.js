@@ -19,15 +19,18 @@ export const cartAdd = async (post) => {
 }; */
 import axios from "axios";
 const URL_API = "http://localhost:3000/api/v1/cart";
-export const cartAdd = async (post) => {
+export const cartAdd = async ( id_user, post) => {
   try {
-    const response = await axios.post(URL_API, post);
+   
+    console.log("id_user cartAdd",id_user)  
+    const response = await axios.post(`${URL_API}/${id_user}`, post);
     console.log("post enviado:", post);
-    if (response.status !== 200) {
+    console.log("response.status desde cartAdd", response.status)
+    if (response.status !== 201) {
       console.log("Respuesta del servidor:", response);
       throw new Error("Data not found");
     }
-    console.log("response desde cartAdd", response)
+    //console.log("response desde cartAdd", response)
     return response.data
     ;
   } catch (error) {

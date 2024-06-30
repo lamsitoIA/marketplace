@@ -31,8 +31,11 @@ const Allproducts = ({
 }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
-  const{addProductToCart} = useContext(CartContext);
+  const{addProductToCart, cart} = useContext(CartContext);
+  console.log("cart desde allproduct", cart)
   const { userId } = useContext(UserContext);
+  console.log("userId de allproduct", userId);
+  
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
   const [priceRange, setPriceRange] = useState([0, 999.999]);
@@ -100,7 +103,8 @@ const Allproducts = ({
       //navigate(`/profile/${userId}`); // Navegar a la página de perfil después de agregar a favoritos
     }
   };
-
+  
+  
   return (
     <>
       <Container>
@@ -192,6 +196,7 @@ const Allproducts = ({
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text>
                         <strong>Publicado por: {product.username}</strong>
+                        <strong>Publicado por: {product.id_product}</strong>
                       </Card.Text>
                       <div>
                         <Badge variant="dark">{product.name}</Badge>
@@ -215,7 +220,10 @@ const Allproducts = ({
                         className=""
                         onClick={() =>
                           (
-                            addProductToCart(product)
+                            
+                            addProductToCart(product.id_product, userId)
+
+                            //addProductToCart(product, userId)
                           )
                         }
                         style={{ margin: "10px", width: "10rem" }}

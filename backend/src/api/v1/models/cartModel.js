@@ -3,11 +3,16 @@ import pool from "../../../../config/db/connectionDb.js";
 
 // Función para crear un producto en el carrito de compras
 export const createCart = async (id_user, id_product, quantity) => {
+  console.log("id_user de model", id_user);
+  console.log("id_product de model", id_product);
+  console.log("quantity de model", quantity);
   const SQLquery = {
     text: "INSERT INTO cart_items (id_user, id_product, quantity) VALUES ($1, $2, $3) RETURNING *",
     values: [id_user, id_product, quantity],
   };
+  console.log("SQLquery de models",SQLquery)
   const response = await pool.query(SQLquery);
+
   return response.rows[0];
 };
 

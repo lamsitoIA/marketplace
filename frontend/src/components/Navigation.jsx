@@ -3,7 +3,7 @@ import cubos from "../../src/assets/image/cubos.png";
 import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
-import { useContext } from "react";
+import { useContext/* , useState,useEffect */ } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
@@ -15,8 +15,12 @@ import {
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/cartContext";
+import { getCartAll } from "./services/getCartAll";
+
+//import {cartAdd} from "../components/services/cartAdd"
 
 const Navigation = () => {
+  //const [totalValue/* , setTotalValue */] = useState(0)
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
   const { cart } = useContext(CartContext);
@@ -64,11 +68,26 @@ if (Array.isArray(cart)) {
 // Now you can use totalValue outside the conditional statement
 console.log("Total value:", totalValue); */
 
-const totalValue = Object.values(cart).reduce((total, current) => {
+/* const totalValue = Object.values(cart).reduce((total, current) => {
   return total + (current.quantity * current.price);
 
-}, 0);
+}, 0); */
+/*  useEffect(() => {
+  const cartData = getCartAll(userId);
+  const NewtotalValue = Object.values(cartData).reduce((total, current) => {
+    return total + (current.quantity * current.price);
+  }, 0);
+  setTotalValue(NewtotalValue);
+}, [cart, setTotalValue, userId]); */ 
 
+ const CartTotalValue = () => {
+  const cartData = getCartAll(userId);
+  const totalValue = Object.values(cartData).reduce((total, current) => {
+    return total + (current.quantity * current.price);
+  },0);
+  return totalValue;
+}; 
+ 
 console.log("valor de totalValue: " + typeof totalValue)
   
   //const userId = isAuthenticated && user ? user.sub : localUserId;
@@ -214,7 +233,7 @@ console.log(user);
 
                 <Nav.Link>
                   <FaCartPlus  title="Carrito de Compra"/>
-                  <span id="total" className="m-4">$:{totalValue}</span>
+                  <span id="total" className="m-4">${CartTotalValue}</span>
                 </Nav.Link>
               </>
             ) : (
