@@ -59,12 +59,12 @@ export const getAllCart = async (req, res) =>{
 export const addtoCart = async (req, res) => {
   try {
     const { id_user } = req.params; // Obtener el id del usuario
-    const {id_product, quantity } = req.body; // Obtener los datos del producto y la cantidad a agregar
+    const {id_product_newCartItem, quantity_newCartItem } = req.body; // Obtener los datos del producto y la cantidad a agregar
     console.log("req.bodyPrueba",req.body);
     const createdCartItem = await createCart(
      id_user,
-      id_product,
-      quantity
+     id_product_newCartItem,
+     quantity_newCartItem
     ); // Llamar a la función para crear el producto en la base de datos
     res.status(201).json({ newCartItem: createdCartItem }); // Enviar el nuevo producto como respuesta
   } catch (error) {

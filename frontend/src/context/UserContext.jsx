@@ -5,7 +5,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [url_icons, setUrlIcons] = useState("");
-  const [userId, setUserId, id_user] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [username, setUsername] = useState(null);
   
 
@@ -15,7 +15,6 @@ export const UserProvider = ({ children }) => {
         users,
         setUsers,
         userId,
-        id_user,
         setUserId,
         username,
         setUsername,
