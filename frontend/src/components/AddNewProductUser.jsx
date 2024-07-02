@@ -13,7 +13,7 @@ import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 
 const AddNewProductUser = () => {
-  const { getMyProducts } = useContext(ProductContext);
+  const { publicarProducto } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
 
   const [name, setName] = useState("");
@@ -71,12 +71,11 @@ const AddNewProductUser = () => {
       },
     };
 
-    productAdd(nuevoProducto)
+    publicarProducto(nuevoProducto)
       .then((response) => {
         setIsLoading(false);
         if (response.newProduct) {
           setTimeout(() => {
-            getMyProducts();
             navigate(`/profile/${userId}`);
           }, 1000);
         } else {

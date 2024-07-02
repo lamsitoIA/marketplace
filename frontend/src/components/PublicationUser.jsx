@@ -13,6 +13,7 @@ const PublicationUser = () => {
   const navigate = useNavigate();
 
   const {
+    product,
     products,
     deleteProduct,
     getMyProducts,
@@ -28,7 +29,7 @@ const PublicationUser = () => {
   useEffect(() => {
     getMyProducts();
     getFavorites(token);
-  }, [productFav]);
+  }, [product, productFav]);
 
   return (
     <Container>

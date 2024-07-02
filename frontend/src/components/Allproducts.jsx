@@ -19,6 +19,7 @@ const Allproducts = ({
   let token = localStorage.getItem("token");
   const navigate = useNavigate();
   const {
+    product,
     products,
     getMyProducts,
     getFavorites,
@@ -69,7 +70,7 @@ const Allproducts = ({
   useEffect(() => {
     getMyProducts();
     getFavorites(token);
-  }, [productFav]);
+  }, [ product, productFav]);
 
   return (
     <>

@@ -6,6 +6,7 @@ import { productFavorite } from "../components/services/productFavorite.js";
 import { productAddToFavorites } from "../components/services/productAddToFavorites.js";
 import { productGetFavorites } from "../components/services/productGetFavorites.js";
 import { productDeleteFavorite } from "../components/services/productDeleteFavorite.js";
+import { productAdd } from "../components/services/productAdd.js";
 
 export const ProductContext = createContext();
 
@@ -42,6 +43,16 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const publicarProducto = async (newProduct) => {
+    try {
+      const response = await productAdd(newProduct);
+      setProduct(response.newProduct);
+      return response;
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   const addToFavorites = async (id_product, id_user) => {
     try {
       const response = await productAddToFavorites(id_user, id_product);
@@ -71,9 +82,10 @@ export const ProductProvider = ({ children }) => {
   };
 
   const isFavorite = (productId) => {
-    return productsFav.some((favProduct) => favProduct.id_product === productId);
+    return productsFav.some(
+      (favProduct) => favProduct.id_product === productId
+    );
   };
-
 
   const handleFavoriteClick = async (productId, userId, token) => {
     if (isFavorite(productId)) {
@@ -81,9 +93,8 @@ export const ProductProvider = ({ children }) => {
     } else {
       await addToFavorites(productId, userId);
     }
-    await getFavorites(token); 
+    await getFavorites(token);
   };
-
 
   return (
     <ProductContext.Provider
@@ -101,6 +112,7 @@ export const ProductProvider = ({ children }) => {
         deleteProduct,
         addToFavorites,
         getFavorites,
+        publicarProducto,
         deleteProductFromFavorites,
         isFavorite,
         handleFavoriteClick,
