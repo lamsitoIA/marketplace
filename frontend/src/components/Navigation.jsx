@@ -3,7 +3,7 @@ import cubos from "../../src/assets/image/cubos.png";
 import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
-import { useContext/* , useState,useEffect */ } from "react";
+import { useContext, useState/* ,useEffect */ } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
@@ -16,80 +16,39 @@ import {
 import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/cartContext";
 import { getCartAll } from "./services/getCartAll";
-
+//import { Link } from 'react-router-dom'; 
+//import { Nav } from 'react-bootstrap'; 
 //import {cartAdd} from "../components/services/cartAdd"
 
 const Navigation = () => {
   //const [totalValue/* , setTotalValue */] = useState(0)
+  //const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-  const { cart } = useContext(CartContext);
-  console.log("cart de navigation",cart)
-  /* const totalPrice = cart.reduce((total, product) => total + product.quantity * product.price, 0); */
- /*  let totalValue;
-
-if (Array.isArray(cart)) {
-    // cart is an array, you can use reduce
-    totalValue = cart.reduce((total, current) => {
-        const currentItemValue = current.price * current.quantity;
-        return total + currentItemValue;
-    }, 0.0);
-} else {
-    // cart is not an array, handle the error
-    console.error("cart is not an array");
-    totalValue = 0; // Set a default value for totalValue
-}
-
-// Now you can use totalValue outside the conditional statement
-console.log("Total value:", totalValue);
-
- */
-/* let totalValue;
-
-if (Array.isArray(cart)) {
-    // El carrito es una matriz, puedes usar reduc.
-    totalValue = cart.reduce((total, current) => {
-        const currentItemValue = current.price * current.quantity;
-        return total + currentItemValue;
-    }, 0.0);
-} else if (typeof cart === 'object') {
-    // El carrito es un objeto, manéjelo en consecuencia.
-    console.error("cart is an object");
-} else if (cart === null || cart === undefined) {
-    // el carrito es nulo o no está definido, manéjelo en consecuencia
-    console.error("cart is null or undefined");
-    totalValue = 0; // Establecer un valor predeterminado para totalValue
-} else {
-    // El carrito es otra cosa, manéjelo en consecuencia.
-    console.error("cart is not an array, object, null, or undefined");
-    totalValue = 0; // Set a default value for totalValue
-}
-
-// Now you can use totalValue outside the conditional statement
-console.log("Total value:", totalValue); */
-
-/* const totalValue = Object.values(cart).reduce((total, current) => {
-  return total + (current.quantity * current.price);
-
-}, 0); */
-/*  useEffect(() => {
-  const cartData = getCartAll(userId);
-  const NewtotalValue = Object.values(cartData).reduce((total, current) => {
-    return total + (current.quantity * current.price);
-  }, 0);
-  setTotalValue(NewtotalValue);
-}, [cart, setTotalValue, userId]); */ 
-
- const CartTotalValue = () => {
-  const cartData = getCartAll(userId);
-  const totalValue = Object.values(cartData).reduce((total, current) => {
-    return total + (current.quantity * current.price);
-  },0);
-  return totalValue;
-}; 
- 
-console.log("valor de totalValue: " + typeof totalValue)
+  const { cartproducts } = useContext(CartContext);
+  console.log("cartproducts de navigation",cartproducts)
   
+
+const [cartTotal, setCartTotal] = useState(0);
+
+const CartTotalValue = async () => {
+  try {
+    const cartData = await getCartAll(userId);
+    const totalValue = Object.values(cartData.productsCart).reduce((total, current) => {
+      return total + (parseFloat(current.quantity) * parseFloat(current.price));
+    }, 0);
+    setCartTotal(totalValue);
+    return totalValue;
+  } catch (error) {
+    console.error('Error al obtener los datos del carrito:', error);
+    setCartTotal(0);
+    return 0;
+  }
+};
+
+ 
+console.log("valor de CartTotalValue: " + typeof CartTotalValue())
+
   //const userId = isAuthenticated && user ? user.sub : localUserId;
 console.log(user);
   let imageToShow;
@@ -233,8 +192,12 @@ console.log(user);
 
                 <Nav.Link>
                   <FaCartPlus  title="Carrito de Compra"/>
-                  <span id="total" className="m-4">${CartTotalValue}</span>
+                  <span id="total" className="m-4">${cartTotal}</span>
                 </Nav.Link>
+            {/* <Nav.Link as={Link} to={`/cart/${user.sub}`}>
+                  <FaCartPlus title="Carrito de Compra" />
+                  <span id="total" className="m-4">${cartTotal}</span>
+                </Nav.Link>*/}
               </>
             ) : (
               <>

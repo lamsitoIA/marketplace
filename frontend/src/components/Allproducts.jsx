@@ -31,8 +31,8 @@ const Allproducts = ({
 }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
-  const{addProductToCart, cart} = useContext(CartContext);
-  console.log("cart desde allproduct", cart)
+  const{addProductToCart, cartproduct} = useContext(CartContext);
+  console.log("cart desde allproduct",cartproduct)
   const { userId } = useContext(UserContext);
   console.log("userId de allproduct", userId);
   
@@ -196,7 +196,7 @@ const Allproducts = ({
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text>
                         <strong>Publicado por: {product.username}</strong>
-                        <strong>Publicado por: {product.id_product}</strong>
+                        <strong>Publicado por: {product.id_product}</strong>{/* se coloco esta linea para ver si se trae el id del producto y si lo trae */}
                       </Card.Text>
                       <div>
                         <Badge variant="dark">{product.name}</Badge>
