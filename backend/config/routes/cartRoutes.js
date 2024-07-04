@@ -4,13 +4,13 @@ import {
   getAllCart,
   updateCartItem /* , getCartById */,
   deleteCart,
-} from "../../src/api/v1/controllers/cartControllers.js";
+} from "../../src/api/v1/controllers/cartController.js";
 
 const router = express.Router();
 
-router.get("/cart/:idUser", getAllCart);
+router.get("/cart/:id_user", getAllCart);
 /* router.get("/products/:id", getCartById); */
-router.post("/cart", addtoCart);
+router.post("/cart/:id_user", addtoCart);//colocar idUser en la ruta
 router.put("/cart/:id", updateCartItem);
 router.delete("/cart/:id", deleteCart);
 

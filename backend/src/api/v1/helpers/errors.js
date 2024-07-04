@@ -8,6 +8,8 @@ const ERRORS = [
 { code: "auth_02", status: 400, message: "Invalid password" },
 { code: "auth_03", status: 401, message: "token must be present" },
 { code: "auth_04", status: 401, message: "the token is not valid" },
+{ code: "auth_5", status: 204, message: "El producto no exixte en el carrito" },
+{ code: "auth_6", status: 200, message: "El producto eliminado exitosamente" },
 { code: "22001", status: 400, message: "exceeds the allowed type of characters"},
 { code: "23505", status: 400, message: "Has a unique constraint and cannot be repeated in the database"}
 ];

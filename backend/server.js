@@ -5,7 +5,7 @@ import swagger from "./config/swagger/swagger.js";
 import productRouter from "./config/routes/productRoutes.js";
 import userRouter from "./config/routes/userRoutes.js";
 import loginRouter from "./config/routes/loginRoutes.js";
-
+import cartRouter from "./config/routes/cartRoutes.js"
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -20,6 +20,7 @@ app.get("/",(req,res)=> {
 app.use("/api/v1", userRouter);
 app.use("/api/v1", loginRouter);
 app.use("/api/v1", productRouter);
+app.use("/api/v1", cartRouter );
 
 
 app.listen(PORT, () => {

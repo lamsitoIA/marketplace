@@ -13,6 +13,7 @@ import EditNewProduct from "../views/EditNewProduct.jsx";
 import DetailedProduct from "../views/DetailedProduct.jsx";
 //import RouteProtection from "../components/RouteProtection.jsx";
 import { UserContext } from "../context/UserContext";
+import ShoppingCart from "../components/ShoppingCart.jsx";
 
 const ConnectRoutes = () => {
   const { userId, username } = useContext(UserContext);
@@ -30,6 +31,7 @@ const ConnectRoutes = () => {
       <R path="*" element={<NotFound />} />
       <R path="/allproducts" element={<ShowcaseProducts />} />
       {<R path="/product/:id" element={<DetailedProduct />} />}{" "}
+      <R path="/cart/:userId" element={<ShoppingCart />} /> {/*  aca va el carrito */}
       {/* arreglar detailproductcomponent , es un componente no una vista */}
     </Rs>
   );
