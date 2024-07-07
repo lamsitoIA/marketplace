@@ -60,7 +60,7 @@ export const createProducts = async (req, res) => {
 export const updateProducts = async (req, res) => {
   try {
     const { id } = req.params;
-    const { product } = req.body;
+    const product = req.body;
     const updatedProduct = await updateProduct(id, product);
     res.status(200).json({ updatedProduct: updatedProduct });
   } catch (error) {
@@ -122,7 +122,7 @@ export const getAllProductsFavorite = async (req, res) => {
     res.status(201).json({ allProductsFavorite });
   } catch (error) {
     console.log(error);
-    throw error; 
+    throw error;
   }
 };
 

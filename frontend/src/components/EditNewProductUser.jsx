@@ -1,115 +1,76 @@
 import { useContext, useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { ToastContainer, toast, Bounce } from "react-toastify";
-import { productPut } from "./services/productPut.js";
 import "react-toastify/dist/ReactToastify.css";
 import PreviewProductUser from "./PreviewProductUser.jsx";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-let token = localStorage.getItem("token");
 
 const EditNewProductUser = () => {
   const { id } = useParams();
-  const { getMyProducts, products, updatedProduct, getProductById, product } =
-    useContext(ProductContext);
+  const {
+    getMyProducts,
+    products,
+    updatedProduct,
+    getProductById,
+    product,
+    setProduct,
+  } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  let token = localStorage.getItem("token");
 
   useEffect(() => {
     getProductById(id);
-    console.log(product)
-  }, [product.id_product]);
+  }, [product.id]);
 
-  const findProductById = (productId) => {
-    return products.find(
-      (product) => product.id_product === parseInt(productId)
-    );
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prevUpdateProduct) => ({
+      ...prevUpdateProduct,
+      [name]: value,
+    }));
   };
 
-  const productDescription = findProductById(id);
-
-  const [name, setName] = useState(product.name_product);
-  const [description, setDescription] = useState(
-    productDescription.description
-  );
-  const [price, setPrice] = useState(productDescription.price);
-  const [quantity, setQuantity] = useState(productDescription.quantity);
-  const [state, setState] = useState(productDescription.state);
-  const [url_image, setUrl_image] = useState(productDescription.url_image);
-  const [id_user, setId_user] = useState();
-  const [id_categories, setId_categories] = useState(
-    productDescription.id_categories
-  );
-  const [id_brand, setId_brand] = useState(productDescription.id_brand);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const payloadForNewProduct = {
-      product: {
-        name: name,
-        description: description,
-        price: price,
-        quantity: quantity,
-        state: state,
-        url_image: url_image,
-        id_user: userId,
-        id_categories: id_categories,
-        id_brand: id_brand,
-        id_product: id,
-      },
-    };
-
-    updatedProduct(id, payloadForNewProduct, token)
-      .then((response) => {
-        setIsLoading(false);
-        if (response.updatedProduct) {
-          //validacion si la respuesta viene updatedProduct es verdadero. o puede ser codigo 200
-          setTimeout(() => {
-            getMyProducts();
-            navigate(`/profile/${userId}`);
-          }, 1000);
-        } else {
-          console.log("error es", error);
-          throw Error("Error al registrar producto.");
-        }
-      })
-      .catch((error) => {
-        toast.error("Error al registrar producto: " + error.message, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-      });
+    try {
+      const response = await updatedProduct(product.id_product, product, token);
+      if (response) {
+        toast.success("Product updated successfully");
+        navigate(`/profile/${userId}`);
+      } else {
+        toast.error("Failed to update product");
+      }
+    } catch (error) {
+      console.error("Error updating product:", error);
+      toast.error("An error occurred while updating the product");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  useEffect(() => {
-    getProductById(id);
-  }, [id]);
+  if (!product) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <section className={`row ${isLoading ? "loading-cursor" : ""}`}>
         <div className="col-12 col-md-6">
           <PreviewProductUser
-            name={name ? name : productDescription.name_product}
-            description={
-              description ? description : productDescription.description
-            }
-            price={price ? price : productDescription.price}
-            url_image={url_image ? url_image : productDescription.url_image}
+            name={product.name_product}
+            description={product.description}
+            price={product.price}
+            url_image={product.url_image}
             username={username}
-            state={state ? state : productDescription.state}
-            quantity={quantity ? quantity : productDescription.quantity}
+            state={product.state}
+            quantity={product.quantity}
           />
         </div>
 
@@ -119,75 +80,70 @@ const EditNewProductUser = () => {
               <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={"productDescription.name_product"}
-                onChange={(e) => setName(e.target.value)}
-                value={name ? name : productDescription.name_product}
+                name="name_product"
+                value={product.name_product}
+                onChange={handleInputChange}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicRut">
+            <Form.Group className="mb-3" controlId="formBasicDescription">
               <Form.Label>Descripción</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={productDescription.description}
-                value={
-                  description ? description : productDescription.description
-                }
-                onChange={(e) => setDescription(e.target.value)}
+                name="description"
+                value={product.description}
+                onChange={handleInputChange}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicPrice">
               <Form.Label>Precio</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={productDescription.price}
-                onChange={(e) => setPrice(e.target.value)}
-                value={price ? price : productDescription.price}
+                name="price"
+                value={product.price}
+                onChange={handleInputChange}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="formBasicQuantity">
               <Form.Label>Cantidad</Form.Label>
               <Form.Control
                 type="number"
-                placeholder={productDescription.quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-                value={quantity ? quantity : productDescription.quantity}
+                name="quantity"
+                value={product.quantity}
+                onChange={handleInputChange}
               />
             </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicState">
               <Form.Label>Estado</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={productDescription.state}
-                onChange={(e) => setState(e.target.value)}
-                value={state ? state : productDescription.state}
+                name="state"
+                value={product.state}
+                onChange={handleInputChange}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicAddress">
+            <Form.Group className="mb-3" controlId="formBasicUrlImage">
               <Form.Label>URL Imagen</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={productDescription.url_image}
-                onChange={(e) => setUrl_image(e.target.value)}
-                value={url_image ? url_image : productDescription.url_image}
+                name="url_image"
+                value={product.url_image}
+                onChange={handleInputChange}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicAddress">
+            <Form.Group className="mb-3" controlId="formBasicCategories">
               <Form.Label>Categoria</Form.Label>
               <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setId_categories(e.target.value)}
-                value={
-                  id_categories
-                    ? id_categories
-                    : productDescription.id_categories
-                }
+                name="id_categories"
+                value={product.id_categories}
+                onChange={handleInputChange}
               >
-                <option>{productDescription.id_categories}</option>
+                <option>{product.id_categories}</option>
                 <option value="1">Phone</option>
                 <option value="2">Laptop</option>
                 <option value="3">Smart watch</option>
@@ -197,14 +153,14 @@ const EditNewProductUser = () => {
               </Form.Select>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicAddress">
+            <Form.Group className="mb-3" controlId="formBasicBrand">
               <Form.Label>Marca</Form.Label>
               <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setId_brand(e.target.value)}
-                value={id_brand ? id_brand : productDescription.id_brand}
+                name="id_brand"
+                value={product.id_brand}
+                onChange={handleInputChange}
               >
-                <option>{productDescription.id_brand}</option>
+                <option>{product.id_brand}</option>
                 <option value="1">SAMSUNG</option>
                 <option value="2">LG</option>
                 <option value="3">APPLE</option>
@@ -217,7 +173,7 @@ const EditNewProductUser = () => {
                 <option value="10">SONY WATCH</option>
                 <option value="11">FITBIT WATCH</option>
                 <option value="12">SAMSUNG WATCH</option>
-                <option value="13">XIAOAMI</option>
+                <option value="13">XIAOMI</option>
                 <option value="14">HUAWEI</option>
               </Form.Select>
             </Form.Group>

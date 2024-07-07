@@ -55,7 +55,7 @@ export const createProduct = async ({
 export const updateProduct = async (
   id_product,
   {
-    name,
+    name_product,
     description,
     price,
     quantity,
@@ -70,7 +70,7 @@ export const updateProduct = async (
   const SQLquery = {
     text: "UPDATE products SET name = $1, description = $2, price = $3, quantity = $4, state = $5 , isFavorite = $6, url_image = $7, id_user = $8, id_categories = $9, id_brand = $10 WHERE id_product = $11 RETURNING *",
     values: [
-      name,
+      name_product,
       description,
       price,
       quantity,

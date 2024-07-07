@@ -21,7 +21,7 @@ const PreviewProductUser = ({
       >
         <Card.Img
           variant="top"
-          src={url_image}
+          src={url_image ? url_image : addproductimg}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
           alt={name}
         />
