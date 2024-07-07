@@ -7,12 +7,14 @@ import { productAddToFavorites } from "../components/services/productAddToFavori
 import { productGetFavorites } from "../components/services/productGetFavorites.js";
 import { productDeleteFavorite } from "../components/services/productDeleteFavorite.js";
 import { productAdd } from "../components/services/productAdd.js";
+import { productPut } from "../components/services/productPut.js";
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
+  const [productUpdate, setProductUpdate] = useState([]);
   const [productFav, setProductFav] = useState([]);
   const [productsFav, setProductsFav] = useState([]);
 
@@ -29,8 +31,19 @@ export const ProductProvider = ({ children }) => {
     try {
       const response = await productGetById(id);
       setProduct(response.product);
+      return response;
     } catch (error) {
       console.error("Error fetching product by id:", error);
+    }
+  };
+
+  const updatedProduct = async (id, product, token) => {
+    try {
+      const response = await productPut(id, product, token);
+      setProductUpdate(response.updatedProduct);
+      return response;
+    } catch (error) {
+      console.error("Error updating  product by ", error);
     }
   };
 
@@ -116,6 +129,8 @@ export const ProductProvider = ({ children }) => {
         deleteProductFromFavorites,
         isFavorite,
         handleFavoriteClick,
+        updatedProduct,
+        productUpdate,
       }}
     >
       {children}

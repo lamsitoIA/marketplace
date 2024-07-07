@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { productPut } from "./services/productPut.js";
@@ -11,7 +11,7 @@ let token = localStorage.getItem("token");
 
 const EditNewProductUser = () => {
   const { id } = useParams();
-  const { getMyProducts, products } = useContext(ProductContext);
+  const { getMyProducts, products, updatedProduct, getProductById, product, } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
 
   const findProductById = (productId) => {
@@ -22,7 +22,7 @@ const EditNewProductUser = () => {
 
   const productDescription = findProductById(id);
 
-  const [name, setName] = useState(productDescription.name_product);
+  const [name, setName] = useState("");
   const [description, setDescription] = useState(
     productDescription.description
   );
@@ -57,7 +57,7 @@ const EditNewProductUser = () => {
       },
     };
 
-    productPut(id, payloadForNewProduct, token)
+    updatedProduct(id, payloadForNewProduct, token)
       .then((response) => {
         setIsLoading(false);
         if (response.updatedProduct) {
@@ -86,6 +86,10 @@ const EditNewProductUser = () => {
       });
   };
 
+  useEffect(() => {
+    getProductById(id);
+  }, [id]);
+
   return (
     <>
       <section className={`row ${isLoading ? "loading-cursor" : ""}`}>
@@ -109,9 +113,9 @@ const EditNewProductUser = () => {
               <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={productDescription.name_product}
+                placeholder={"productDescription.name_product"}
                 onChange={(e) => setName(e.target.value)}
-                value={name ? name : productDescription.name_product}
+                value={product.name }
               />
             </Form.Group>
 
