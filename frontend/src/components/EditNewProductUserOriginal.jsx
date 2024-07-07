@@ -11,14 +11,8 @@ let token = localStorage.getItem("token");
 
 const EditNewProductUser = () => {
   const { id } = useParams();
-  const { getMyProducts, products, updatedProduct, getProductById, product } =
-    useContext(ProductContext);
+  const { getMyProducts, products, updatedProduct, getProductById, product, } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
-
-  useEffect(() => {
-    getProductById(id);
-    console.log(product)
-  }, [product.id_product]);
 
   const findProductById = (productId) => {
     return products.find(
@@ -28,7 +22,7 @@ const EditNewProductUser = () => {
 
   const productDescription = findProductById(id);
 
-  const [name, setName] = useState(product.name_product);
+  const [name, setName] = useState("");
   const [description, setDescription] = useState(
     productDescription.description
   );
@@ -121,7 +115,7 @@ const EditNewProductUser = () => {
                 type="text"
                 placeholder={"productDescription.name_product"}
                 onChange={(e) => setName(e.target.value)}
-                value={name ? name : productDescription.name_product}
+                value={product.name }
               />
             </Form.Group>
 
