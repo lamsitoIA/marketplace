@@ -16,18 +16,18 @@ export const CartProvider = ({ children }) => {
   // const { getMyProducts } = useContext(ProductContext);
 
 
-  const getMyCart = async (id_user) => {
+  const getMyCart = async (id_user) => {//
     try {
-      const response = await getCartAll(id_user);
+      const response = await getCartAll(id_user);//Esta función es responsable de obtener todo el contenido del carrito del usuario.
       setCartproduct(response.productsCart.map((product) => ({ ...product })));
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   };
 
-  const addProductToCart = async (productId, id_user) => {
+  const addProductToCart = async (productId, id_user) => {//Esta función se encarga de añadir un nuevo producto al carrito de compra del usuario
     const newCartItem = {
-      id_user_newCartItem: id_user,
+      id_user_newCartItem: id_user,//clave y valor
       id_product_newCartItem: productId,
       quantity_newCartItem: 1,
     };
@@ -38,10 +38,11 @@ export const CartProvider = ({ children }) => {
     } = newCartItem;
 
     try {
-      const agregandoAlCarro = await cartAdd(newCartItem);
+      const agregandoAlCarro = await cartAdd(newCartItem);//Llama a la función, que  realiza una solicitud de API para agregar el nuevo artículo al carrito del usuario
+      //se le pasa el objeto newCartItem que continen id usuario, id producto y la cantidad
       setCartproduct(agregandoAlCarro);
 /*       console.log("getMyCart",getMyCart(id_user)) */
-      return agregandoAlCarro;
+      return agregandoAlCarro;//retorna el objeto con sus valores llamado del servidor 
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }

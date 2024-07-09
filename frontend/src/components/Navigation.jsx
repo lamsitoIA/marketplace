@@ -14,30 +14,32 @@ import {
   FaCartPlus,
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
-import { CartContext } from "../context/cartContext";
-import { getCartAll } from "./services/getCartAll";
+//import { CartContext } from "../context/cartContext";
+import { getCartAll } from "./services/getCartAll";//solicitud al servidor para obtener los datos del carrito de compras
 //import { Link } from 'react-router-dom'; 
 //import { Nav } from 'react-bootstrap'; 
 //import {cartAdd} from "../components/services/cartAdd"
 
 const Navigation = () => {
-  //const [totalValue/* , setTotalValue */] = useState(0)
-  //const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
+ 
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-  const { cartproducts } = useContext(CartContext);
-  console.log("cartproducts de navigation",cartproducts)
+  //const { cartproducts } = useContext(CartContext);
+  //console.log("cartproducts de navigation",cartproducts)
   
 
 const [cartTotal, setCartTotal] = useState(0);
 
 const CartTotalValue = async () => {
   try {
-    const cartData = await getCartAll(userId);
-    const totalValue = Object.values(cartData.productsCart).reduce((total, current) => {
-      return total + (parseFloat(current.quantity) * parseFloat(current.price));
+    const cartData = await getCartAll(userId);//solicitud al servidor para obtener los productos del carrito por un usuario en especifico
+    const totalValue = Object.values(cartData.productsCart).reduce((total, current) => {//productsCart, viene de la respuesta del controlador
+      //reduce() es un método de array en JavaScript que permite iterar sobre los elementos del array y acumular un valor.
+      //Object.values() es un método de JavaScript que devuelve un array con los valores de las propiedades de un objeto.
+      return total + ((current.quantity) * (current.price));//parseFloat por si acaso es un string y convertirlo a numero, pero no es necesario
     }, 0);
-    setCartTotal(totalValue);
+    setCartTotal(totalValue);//se actualiza el valor de cartTotal
+    console.log("cartTotal de navigation",cartTotal)
     return totalValue;
   } catch (error) {
     console.error('Error al obtener los datos del carrito:', error);
@@ -46,7 +48,7 @@ const CartTotalValue = async () => {
   }
 };
 
- 
+
 console.log("valor de CartTotalValue: " + typeof CartTotalValue())
 
   //const userId = isAuthenticated && user ? user.sub : localUserId;
@@ -190,14 +192,11 @@ console.log(user);
                   
                 </NavDropdown>
 
-                <Nav.Link>
-                  <FaCartPlus  title="Carrito de Compra"/>
-                  <span id="total" className="m-4">${cartTotal}</span>
-                </Nav.Link>
-            {/* <Nav.Link as={Link} to={`/cart/${user.sub}`}>
+                
+            <Nav.Link as={Link} to={`/cart/${userId}`}>
                   <FaCartPlus title="Carrito de Compra" />
-                  <span id="total" className="m-4">${cartTotal}</span>
-                </Nav.Link>*/}
+                  <span id="total" className="m-4">${cartTotal.toFixed(2)}</span>
+                </Nav.Link>
               </>
             ) : (
               <>

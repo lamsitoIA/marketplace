@@ -14,7 +14,7 @@ export const createCart = async (id_user, id_product, quantity) => {
 // Función para obtener todos los productos del carrito de un usuario
 export const AllCart = async (id) => {
   const SQLquery = {
-    text: "SELECT ci.id, ci.quantity, ci.id_user AS id_comprador, p.name, p.price, p.quantity AS stock, p.url_image FROM  cart_items AS ci INNER JOIN products AS p ON ci.id_product = p.id_product WHERE ci.id_user = $1",
+    text: "SELECT ci.id, ci.quantity, ci.id_user AS id_comprador, p.name, p.price, p.quantity AS stock, p.url_image, p.description FROM  cart_items AS ci INNER JOIN products AS p ON ci.id_product = p.id_product WHERE ci.id_user = $1",
     values: [id],
   };
   const response = await pool.query(SQLquery);
