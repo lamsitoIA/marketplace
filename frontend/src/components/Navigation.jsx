@@ -3,7 +3,7 @@ import cubos from "../../src/assets/image/cubos.png";
 import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
-import { useContext/* , useState,useEffect */ } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
@@ -15,83 +15,52 @@ import {
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/cartContext";
-import { getCartAll } from "./services/getCartAll";
-
+import { getCartAll } from "./services/getCartAll"; //solicitud al servidor para obtener los datos del carrito de compras
+//import { Link } from 'react-router-dom';
+//import { Nav } from 'react-bootstrap';
 //import {cartAdd} from "../components/services/cartAdd"
 
 const Navigation = () => {
-  //const [totalValue/* , setTotalValue */] = useState(0)
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-  const { cart } = useContext(CartContext);
-  console.log("cart de navigation",cart)
-  /* const totalPrice = cart.reduce((total, product) => total + product.quantity * product.price, 0); */
- /*  let totalValue;
+  const { cartproducts, getMyCart, cartproduct } = useContext(CartContext);
+  //console.log("cartproducts de navigation",cartproducts)
 
-if (Array.isArray(cart)) {
-    // cart is an array, you can use reduce
-    totalValue = cart.reduce((total, current) => {
-        const currentItemValue = current.price * current.quantity;
-        return total + currentItemValue;
-    }, 0.0);
-} else {
-    // cart is not an array, handle the error
-    console.error("cart is not an array");
-    totalValue = 0; // Set a default value for totalValue
-}
+  useEffect(() => {
+    getMyCart(userId);
+  }, [cartproduct, username]);
 
-// Now you can use totalValue outside the conditional statement
-console.log("Total value:", totalValue);
+  const [cartTotal, setCartTotal] = useState(0);
 
- */
-/* let totalValue;
+  const CartTotalValue = async () => {
+    console.log("cartproducts en navigation", cartproducts);
+    try {
+      const cartData = await getCartAll(userId); //solicitud al servidor para obtener los productos del carrito por un usuario en especifico
+      console.log("cartData es ", cartData);
 
-if (Array.isArray(cart)) {
-    // El carrito es una matriz, puedes usar reduc.
-    totalValue = cart.reduce((total, current) => {
-        const currentItemValue = current.price * current.quantity;
-        return total + currentItemValue;
-    }, 0.0);
-} else if (typeof cart === 'object') {
-    // El carrito es un objeto, manéjelo en consecuencia.
-    console.error("cart is an object");
-} else if (cart === null || cart === undefined) {
-    // el carrito es nulo o no está definido, manéjelo en consecuencia
-    console.error("cart is null or undefined");
-    totalValue = 0; // Establecer un valor predeterminado para totalValue
-} else {
-    // El carrito es otra cosa, manéjelo en consecuencia.
-    console.error("cart is not an array, object, null, or undefined");
-    totalValue = 0; // Set a default value for totalValue
-}
+      const totalValue = Object.values(cartproducts).reduce(
+        (total, current) => {
+          //productsCart, viene de la respuesta del controlador
+          //reduce() es un método de array en JavaScript que permite iterar sobre los elementos del array y acumular un valor.
+          //Object.values() es un método de JavaScript que devuelve un array con los valores de las propiedades de un objeto.
+          return total + current.quantity * current.price; //parseFloat por si acaso es un string y convertirlo a numero, pero no es necesario
+        },
+        0
+      );
+      setCartTotal(totalValue); //se actualiza el valor de cartTotal
 
-// Now you can use totalValue outside the conditional statement
-console.log("Total value:", totalValue); */
+      return totalValue;
+    } catch (error) {
+      console.error("Error al obtener los datos del carrito:", error);
+      setCartTotal(0);
+      return 0;
+    }
+  };
 
-/* const totalValue = Object.values(cart).reduce((total, current) => {
-  return total + (current.quantity * current.price);
+  console.log("valor de CartTotalValue: " + typeof CartTotalValue());
 
-}, 0); */
-/*  useEffect(() => {
-  const cartData = getCartAll(userId);
-  const NewtotalValue = Object.values(cartData).reduce((total, current) => {
-    return total + (current.quantity * current.price);
-  }, 0);
-  setTotalValue(NewtotalValue);
-}, [cart, setTotalValue, userId]); */ 
-
- const CartTotalValue = () => {
-  const cartData = getCartAll(userId);
-  const totalValue = Object.values(cartData).reduce((total, current) => {
-    return total + (current.quantity * current.price);
-  },0);
-  return totalValue;
-}; 
- 
-console.log("valor de totalValue: " + typeof totalValue)
-  
   //const userId = isAuthenticated && user ? user.sub : localUserId;
-console.log(user);
+
   let imageToShow;
   if (userId === null) {
     imageToShow = cubos;
@@ -99,7 +68,12 @@ console.log(user);
     imageToShow = cubosLoggedIn;
   }
   return (
-    <Navbar expand="lg" className="bg-body-tertiary navbarLam " bg="light" data-bs-theme="light">
+    <Navbar
+      expand="lg"
+      className="bg-body-tertiary navbarLam "
+      bg="light"
+      data-bs-theme="light"
+    >
       <Container>
         <Navbar.Brand>
           <Link to="/">
@@ -112,9 +86,9 @@ console.log(user);
           </Link>
         </Navbar.Brand>
 
-        <Navbar.Toggle  aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto " >
+          <Nav className="ms-auto ">
             {isAuthenticated ? (
               <>
                 <Nav.Link
@@ -133,7 +107,11 @@ console.log(user);
                   <FaCirclePlus />
                 </Nav.Link>
 
-                <Nav.Link as={Link} to={`/profile/${user.sub}`} title="Mi Perfil">
+                <Nav.Link
+                  as={Link}
+                  to={`/profile/${user.sub}`}
+                  title="Mi Perfil"
+                >
                   <FaUserLarge />
                 </Nav.Link>
 
@@ -159,23 +137,19 @@ console.log(user);
                     <FaGlobe /> Todos los Productos
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                 
+
                   <NavDropdown.Item
                     as={Link}
                     onClick={() => logout({ returnTo: "/" })}
                     title="Salir"
                   >
-                    <FaArrowRightFromBracket
-                      style={{color: "black" }}
-                    />{""} Cerrar sesión
+                    <FaArrowRightFromBracket style={{ color: "black" }} />
+                    {""} Cerrar sesión
                   </NavDropdown.Item>
                 </NavDropdown>
               </>
-
-              
             ) : username ? (
               <>
-              
                 <Nav.Link
                   as={Link}
                   to="/allproducts"
@@ -218,36 +192,35 @@ console.log(user);
                     <FaGlobe /> Todos los Productos
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                 
+
                   <NavDropdown.Item
                     as={Link}
                     onClick={() => logout({ returnTo: "/" })}
                     title="Salir"
                   >
-                    <FaArrowRightFromBracket
-                      style={{color: "black" }}
-                    />{""} Cerrar sesión
+                    <FaArrowRightFromBracket style={{ color: "black" }} />
+                    {""} Cerrar sesión
                   </NavDropdown.Item>
-                  
                 </NavDropdown>
 
-                <Nav.Link>
-                  <FaCartPlus  title="Carrito de Compra"/>
-                  <span id="total" className="m-4">${CartTotalValue}</span>
+                <Nav.Link as={Link} to={`/cart/${userId}`}>
+                  <FaCartPlus title="Carrito de Compra" />
+                  <span id="total" className="m-4">
+                    ${cartTotal.toFixed(2)}
+                  </span>
                 </Nav.Link>
               </>
             ) : (
               <>
-        <Navbar.Collapse>
-                <Nav.Link as={Link} to="/auth_user">
-                  Iniciar sesión
-                </Nav.Link>
+                <Navbar.Collapse>
+                  <Nav.Link as={Link} to="/auth_user">
+                    Iniciar sesión
+                  </Nav.Link>
 
-                <Nav.Link as={Link} to="/users">
-                  Registrar
-                </Nav.Link>
+                  <Nav.Link as={Link} to="/users">
+                    Registrar
+                  </Nav.Link>
                 </Navbar.Collapse>
-              
               </>
             )}
           </Nav>

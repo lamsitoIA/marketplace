@@ -18,8 +18,10 @@ export const CartProvider = ({ children }) => {
 
   const getMyCart = async (id_user) => {
     try {
-      const response = await getCartAll(id_user);
-      setCartporducts(response.productsCart.map((product) => ({ ...product })));
+      const response = await getCartAll(id_user);//Esta función es responsable de obtener todo el contenido del carrito del usuario.
+      console.log("response context", response)
+      setCartproducts(response.productsCart.map((product) => ({ ...product })));
+
     } catch (error) {
       console.error("Error fetching products:", error);
     }
