@@ -94,14 +94,17 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  const isFavorite = (productId) => {
+  const isFavorite = (productId, userId ) => {
+    if(!userId){
+      return false
+    }else{
     return productsFav.some(
       (favProduct) => favProduct.id_product === productId
-    );
+    )};
   };
 
   const handleFavoriteClick = async (productId, userId, token) => {
-    if (isFavorite(productId)) {
+    if (isFavorite(productId, userId)) {
       await deleteProductFromFavorites(productId, token);
     } else {
       await addToFavorites(productId, userId);

@@ -100,7 +100,7 @@ const CardHomePage = ({
                 >
                   <IconHeart
                     className="border_heart"
-                    filled={isFavorite(product.id_product)}
+                    filled={isFavorite(product.id_product, userId)}
                   />
                 </div>
                 {<Card.Title>{product.name_product}</Card.Title>}
