@@ -10,7 +10,7 @@ const FavoriteUser = ({ userId, username }) => {
   let token = localStorage.getItem("token");
 
   const navigate = useNavigate();
-  const { url_icons } = useContext(UserContext);
+  const { url_icons  } = useContext(UserContext);
 
   const { getFavorites, deleteProductFromFavorites, productsFav, isFavorite } =
     useContext(ProductContext);
@@ -95,7 +95,7 @@ const FavoriteUser = ({ userId, username }) => {
                       >
                         <IconHeart
                           className="border_heart"
-                          filled={isFavorite(product.id_product)}
+                          filled={isFavorite(product.id_product, userId)}
                         />
                       </div>
                       <strong> Vendedor: {product.username} </strong>
