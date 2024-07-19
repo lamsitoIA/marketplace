@@ -16,4 +16,4 @@ export const signup = async (post) => {
   }
 };
 
-// Se encarca de llamar a la api y manejar su respuesta.
+// Se encarca de llamar a la api y manejar su respuesta.Cualquiercosa
