@@ -163,3 +163,45 @@ VALUES ('Samsung s21', 'Esta nuevo en caja, con garantia', 899.990, 4, 'Nuevo' ,
  INSERT INTO brands (name)
 VALUES ('SAMSUNG'), ('LG'), ('APPLE'), ('DELL'), ('SONY'), ('LENOVO'), ('HP'), ('BOSE'),
        ('APPLE WATCH'), ('SONY WATCH'), ('FITBIT WATCH'), ('SAMSUNG WATCH'), ('XIAOAMI'), ('HUAWEI'); */
+       CREATE TABLE cart_items (
+    id SERIAL PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_product INT NOT NULL,
+    quantity INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_user) REFERENCES users(id_user),
+    FOREIGN KEY ( id_product) REFERENCES products(id_product)
+);
+
+
+SELECT ci.id, ci.quantity, ci.id_user AS id_comprador, p.name, p.price, p.quantity AS stock, p.url_image FROM  cart_items AS ci INNER JOIN products AS p ON ci.id_product = p.id_product WHERE ci.id_user = 17
+
+
+       
+-- Funcionalidad IsFavorite: Para implementar esta funcionalidad es necesario una tabla para que el usuario pueda marcas sus favoritos
+
+CREATE TABLE user_favorite (
+  id_user_list_favorite SERIAL PRIMARY KEY, 
+  id_user INT NOT NULL, 
+  id_product INT NOT NULL, 
+  create_at TIMESTAMP NOT NULL DEFAULT NOW(), 
+  update_at TIMESTAMP NOT NULL DEFAULT NOW(), 
+  CONSTRAINT fk_user_favorite_user FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE, 
+  CONSTRAINT fk_user_favorite_product FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE,
+  CONSTRAINT uc_user_product UNIQUE (id_user, id_product)
+);
+
+CREATE FUNCTION update_updated_at_user_favorite()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.update_at = now();
+    RETURN NEW;
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER update_user_favorite_updated_at
+BEFORE UPDATE
+ON user_favorite
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_user_favorite();

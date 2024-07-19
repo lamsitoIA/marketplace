@@ -1,17 +1,5 @@
-import React, { useState, useContext } from "react";
-
-import {
-  Badge,
-  Container,
-  Image,
-  Button,
-  Form,
-  Row,
-  Col,
-  Stack,
-  Card,
-} from "react-bootstrap";
-
+import React, { useState, useContext, useEffect } from "react";
+import { Badge, Container, Button, Row, Col, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
@@ -20,6 +8,7 @@ import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+import { CartContext } from "../context/cartContext";
 
 const Allproducts = ({
   isHomePage,
@@ -28,6 +17,7 @@ const Allproducts = ({
   numCards,
   columnClass,
 }) => {
+  let token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
   const { userId } = useContext(UserContext);
@@ -173,11 +163,33 @@ const Allproducts = ({
                     <Card.Body>
                       <div // Botón del corazón
                         className="icon-heart-button" // Estilo CSS opcional
-                        onClick={() => addFavoriteOnClick(product.id_product)} // Llama a la función addFavoriteOnClick
+                        onClick={() => {
+                          if (!userId) {
+                            toast.error(
+                              "Debes iniciar sesión para agregar a favoritos",
+                              {
+                                position: "bottom-right",
+                                autoClose: 1900,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "dark",
+                              }
+                            );
+                          } else {
+                            handleFavoriteClick(
+                              product.id_product,
+                              userId,
+                              token
+                            );
+                          }
+                        }}
                       >
                         <IconHeart
                           className="border_heart"
-                          filled={product.isFavorite}
+                          filled={isFavorite(product.id_product, userId)}
                         />
                       </div>
                       <Card.Title> {product.name_product}</Card.Title>
@@ -190,6 +202,7 @@ const Allproducts = ({
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text>
                         <strong>Publicado por: {product.username}</strong>
+                        <strong>Publicado por: {product.id_product}</strong>{/* se coloco esta linea para ver si se trae el id del producto y si lo trae */}
                       </Card.Text>
                       <div>
                         <Badge variant="dark">{product.name}</Badge>
@@ -207,6 +220,21 @@ const Allproducts = ({
                         style={{ margin: "10px", width: "10rem" }}
                       >
                         Ver detalles
+                      </Button>
+                      <Button
+                        variant="dark"
+                        className=""
+                        onClick={() =>
+                          (
+                            
+                            addProductToCart(product.id_product, userId)
+
+                            //addProductToCart(product, userId)
+                          )
+                        }
+                        style={{ margin: "10px", width: "10rem" }}
+                      >
+                        agregar Carrito
                       </Button>
                     </div>
 

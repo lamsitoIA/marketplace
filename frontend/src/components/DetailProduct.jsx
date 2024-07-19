@@ -13,7 +13,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     getProductById(id);
-  }, []);
+  }, [product.id]);
 
   return (
     <>
@@ -55,6 +55,18 @@ const DetailProduct = () => {
                   <FaAnglesLeft />{" "}
                 </Badge>
                 Retornar
+              </Button>
+              <Button
+                className="custom-button m-1"
+                variant="dark"
+                /* onClick={() =>
+                  fromHomePage ? navigate(`/`) : navigate(`/allproducts`)
+                } */
+              >
+                <Badge bg="secondary" className="p-1">
+                  <FaAnglesLeft />{" "}
+                </Badge>
+                Agregar Carrito
               </Button>
             </Stack>
           </Container>

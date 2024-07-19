@@ -4,7 +4,6 @@ import Navigation from "./components/Navigation";
 import ConnectRoutes from "./routes/ConnectRoutes";
 
 const App = () => {
- 
   return (
     <div>
       <Navigation />
