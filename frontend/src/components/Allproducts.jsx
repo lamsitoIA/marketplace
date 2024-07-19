@@ -199,10 +199,10 @@ const Allproducts = ({
                       <Card.Text>
                         <strong>Precio: ${product.price}</strong>
                       </Card.Text>
-                      <Card.Text>{product.description}</Card.Text>
+                      {<Card.Text>{product.description}</Card.Text>}
                       <Card.Text>
                         <strong>Publicado por: {product.username}</strong>
-                        <strong>Publicado por: {product.id_product}</strong>{/* se coloco esta linea para ver si se trae el id del producto y si lo trae */}
+                        <strong>Publicado por: {product.id_product}</strong>{/* se coloco esta linea para ver si se trae el id del producto y si lo trae..luego arreglar */}
                       </Card.Text>
                       <div>
                         <Badge variant="dark">{product.name}</Badge>
@@ -227,7 +227,8 @@ const Allproducts = ({
                         onClick={() =>
                           (
                             
-                            addProductToCart(product.id_product, userId)
+                            addProductToCart(product.id_product, userId)//agregar un producto específico al carrito de compras del usuario cuando se hace clic en él
+                            //pasado por props
 
                             //addProductToCart(product, userId)
                           )

@@ -66,7 +66,7 @@ export const addtoCart = async (req, res) => {
      id_product_newCartItem,
      quantity_newCartItem
     ); // Llamar a la función para crear el producto en la base de datos
-    res.status(201).json({ newCartItem: createdCartItem }); // Enviar el nuevo producto como respuesta
+    res.status(201).json({ newCartItem: createdCartItem }); // Enviar el nuevo producto como respuesta al frontend
   } catch (error) {
     console.log(error);
     const errorFound = findError(error.code); // Función para encontrar y manejar errores específicos
@@ -79,10 +79,10 @@ export const addtoCart = async (req, res) => {
 // Función para actualizar un producto en el carrito de compras
 export const updateCartItem = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log("id carrito", id)
-    const { quantity } = req.body; // Obtener la cantidad a actualizar
-    const updatedCartItem = await updateCart(id, quantity); // Llamar a la función para actualizar el producto en la base de datos
+    const { id_cart } = req.params;
+    console.log("id carrito", id_cart)
+    const { quantity_cart } = req.body; // Obtener la cantidad a actualizar
+    const updatedCartItem = await updateCart(id_cart, quantity_cart); // Llamar a la función para actualizar el producto en la base de datos
     res.status(200).json({ updatedCartItem: updatedCartItem }); // Enviar el producto actualizado como respuesta
   } catch (error) {
     console.log(error);
@@ -96,8 +96,8 @@ export const updateCartItem = async (req, res) => {
 // Función para eliminar un producto del carrito de compras
 export const deleteCart = async (req, res) => {
   try {
-    const { id } = req.params; // Obtener el ID del producto a eliminar
-    const deletedCartItem = await deleteproductcart(id); // Llamar a la función para eliminar el producto de la base de datos
+    const {  id_cart } = req.params; // Obtener el ID del producto a eliminar
+    const deletedCartItem = await deleteproductcart( id_cart); // Llamar a la función para eliminar el producto de la base de datos
 
     if (deletedCartItem === 0) {
       return res

@@ -175,7 +175,7 @@ VALUES ('SAMSUNG'), ('LG'), ('APPLE'), ('DELL'), ('SONY'), ('LENOVO'), ('HP'), (
 );
 
 
-SELECT ci.id, ci.quantity, ci.id_user AS id_comprador, p.name, p.price, p.quantity AS stock, p.url_image FROM  cart_items AS ci INNER JOIN products AS p ON ci.id_product = p.id_product WHERE ci.id_user = 17
+SELECT ci.id, ci.quantity, ci.id_user AS id_comprador, p.name, p.price, p.quantity AS stock, p.description, p.url_image FROM  cart_items AS ci INNER JOIN products AS p ON ci.id_product = p.id_product WHERE ci.id_user = 17
 
 
        

@@ -11,7 +11,7 @@ const router = express.Router();
 router.get("/cart/:id_user", getAllCart);
 /* router.get("/products/:id", getCartById); */
 router.post("/cart/:id_user", addtoCart);//colocar idUser en la ruta
-router.put("/cart/:id", updateCartItem);
-router.delete("/cart/:id", deleteCart);
+router.put("/cart/:id_cart", updateCartItem);
+router.delete("/cart/:id_cart", deleteCart);
 
 export default router;
