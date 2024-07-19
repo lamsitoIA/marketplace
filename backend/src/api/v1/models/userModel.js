@@ -20,3 +20,11 @@ export const byEmail = async ({email}) => {
     return response.rows[0]
 }
 
+export const createUserAuthGoogle = async ({name, rut, email, password, address, url_icons}) => {
+    const SQLquery = {
+        text: "INSERT INTO users (name,rut,email,password,address,url_icons) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *",
+        values: [name, rut, email, password, address, url_icons]
+    }
+    const response = await pool.query(SQLquery)
+    return response.rows[0]
+}

@@ -18,8 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <CartProvider>
            {/* <StoreProvider> */}
             <Auth0Provider
-              domain="dev-iw8elxagxdwxybue.us.auth0.com" /* domain y clientid tienen que estar en .env y luego pasarlo aca */ /* dev-iw8elxagxdwxybue.us.auth0.com   deployment */   /* dev-skbt4lrbmrsq7v5k.us.auth0.com */
-              clientId="hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1" /* hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1   deployment */   /* T0JnePBH2Ynxd1bfgNiH2Jk4MkFdOzz6 */
+              domain="dev-q03cn3zons4me0rr.us.auth0.com" /* domain y clientid tienen que estar en .env y luego pasarlo aca */ /* dev-iw8elxagxdwxybue.us.auth0.com   deployment */   /* dev-skbt4lrbmrsq7v5k.us.auth0.com */
+              clientId="I3ys5xZnqvcKo2cQUwgF86eqbNewQ5Ew" /* hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1   deployment */   /* T0JnePBH2Ynxd1bfgNiH2Jk4MkFdOzz6 */
               authorizationParams={{
                 redirect_uri: window.location.origin
               }}

@@ -10,9 +10,9 @@ export const signup = async (post) => {
   } catch (error) {
     console.error("Error signup user:", error.message);
     return {
-      userCreated: false,
+      userCreated: false, //esta propiedad indica que la creacion del usuario no se realizo con exito
       error: error.response && error.response.data ? error.response.data.error : error.message
-    };
+    }; // aca digo si error.response y error.repsonse.data es true, entonces retorname el error.response.data.error que es donde va a estar el mensaje de error especifico que nos manda la api y si es false retorname un mensaje el messaje lo propociona axios y es un mensaje generico
   }
 };
 

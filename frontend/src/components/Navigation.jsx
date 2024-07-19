@@ -56,6 +56,7 @@ console.log("valor de CartTotalValue: " + typeof CartTotalValue())
 
   //const userId = isAuthenticated && user ? user.sub : localUserId;
 console.log(user);
+console.log("isAuthenticated", isAuthenticated) 
   let imageToShow;
   if (userId === null) {
     imageToShow = cubos;
@@ -80,6 +81,11 @@ console.log(user);
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto " >
             {isAuthenticated ? (
+
+
+
+
+
               <>
                 <Nav.Link
                   as={Link}
@@ -97,7 +103,7 @@ console.log(user);
                   <FaCirclePlus />
                 </Nav.Link>
 
-                <Nav.Link as={Link} to={`/profile/${user.sub}`} title="Mi Perfil">
+                <Nav.Link as={Link} to={`/profile/${userId}`} title="Mi Perfil">
                   <FaUserLarge />
                 </Nav.Link>
 
@@ -109,11 +115,17 @@ console.log(user);
                   <FaArrowRightFromBracket />
                 </Nav.Link>
                 <NavDropdown title={user.name} id="basic-nav-dropdown">
-                  <NavDropdown.Item as={Link} to={`/profile/${user.sub}`}>
+                  <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
+                 {/*  AQUIIIII 
+                 
+                 
+                 
+                 
+                 */}
                     <FaUserLarge /> Mi perfil
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item as={Link} to={`/favorite/${user.sub}`}>
+                  <NavDropdown.Item as={Link} to={`/favorite/${userId}`}>
                     <FaHeartCircleCheck /> Mis Favoritos
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/addproduct">
