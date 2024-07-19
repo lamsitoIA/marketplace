@@ -4,8 +4,12 @@ import {
   getProductById,
   updateProduct,
   deleteProduct,
-  setFavorite
+  setFavorite,
+  addUserFavoriteList,
+  getAllProductFavorite,
+  deleteFavoriteProduct,
 } from "../models/productModel.js";
+import { byEmail } from "../models/userModel.js";
 import { findError } from "../utils/utils.js";
 
 //get all products
@@ -22,7 +26,7 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-//get products by id 
+//get products by id
 export const getProductsById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,12 +56,11 @@ export const createProducts = async (req, res) => {
   }
 };
 
-
 //put product
 export const updateProducts = async (req, res) => {
   try {
     const { id } = req.params;
-    const { product } = req.body;
+    const product = req.body;
     const updatedProduct = await updateProduct(id, product);
     res.status(200).json({ updatedProduct: updatedProduct });
   } catch (error) {
@@ -69,7 +72,7 @@ export const updateProducts = async (req, res) => {
   }
 };
 
-//patch favorite
+//patch favorite  -> Ya no se esta usando
 export const updateFavorite = async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,6 +101,53 @@ export const deleteProducts = async (req, res) => {
     const deletedProduct = await deleteProduct(id);
 
     if (deletedProduct === 0) {
+      return res.status(404).json({ message: "The record does not exist" });
+    }
+
+    return res.status(204).json({ message: "Record deleted successfully" });
+  } catch (error) {
+    const errorFound = findError(error.code);
+    return res
+      .status(errorFound[0]?.status)
+      .json({ error: errorFound[0]?.message });
+  }
+};
+
+//get favorites
+export const getAllProductsFavorite = async (req, res) => {
+  try {
+    const findUser = await byEmail(req.user);
+    const { id_user } = findUser;
+    const allProductsFavorite = await getAllProductFavorite(id_user);
+    res.status(201).json({ allProductsFavorite });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+//post favorite
+export const addToFavoriteList = async (req, res) => {
+  try {
+    const { id_user, id_product } = req.body;
+    const addToFavorite = await addUserFavoriteList({ id_user, id_product });
+    res.status(201).json({ addToFavorite });
+  } catch (error) {
+    console.log(error);
+    const errorFound = findError(error.code);
+    return res
+      .status(errorFound[0]?.status)
+      .json({ error: errorFound[0]?.message });
+  }
+};
+
+//delete favorite
+export const deleteFavoriteProducts = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedFavorite = await deleteFavoriteProduct(id);
+
+    if (deletedFavorite === 0) {
       return res.status(404).json({ message: "The record does not exist" });
     }
 

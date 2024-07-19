@@ -13,7 +13,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     getProductById(id);
-  }, []);
+  }, [product.id]);
 
   return (
     <>
