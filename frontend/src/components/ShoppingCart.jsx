@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { getCartAll } from './services/getCartAll';
 import { ProductContext } from '../context/ProductContext';
 import { Button, Card, Row, Col, Container } from 'react-bootstrap';
+//import { CartContext } from '../context/cartContext';
 const ShoppingCart = () => {
+  //const { getMyCart} = useContext(CartContext)
   const { userId } = useParams();
   const {products} = useContext(ProductContext)
   const [cartProducts, setCartProducts] = useState([]);
@@ -13,6 +15,7 @@ const ShoppingCart = () => {
     const fetchCartData = async () => {
       try {
         const cartData = await getCartAll(userId);
+        //const cartData = await getMyCart(userId);
         setCartProducts(cartData.productsCart);
 
         const totalValue = Object.values(cartData.productsCart).reduce((total, current) => {
@@ -48,6 +51,7 @@ const ShoppingCart = () => {
       }, 0);
       setCartTotal(totalValue);
     }
+    
   };
 
   const increment = (productId) => {

@@ -3,7 +3,7 @@ import cubos from "../../src/assets/image/cubos.png";
 import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
-import { useContext, useState/* ,useEffect */ } from "react";
+import { useContext, useState ,useEffect } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
@@ -14,7 +14,7 @@ import {
   FaCartPlus,
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
-//import { CartContext } from "../context/cartContext";
+import { CartContext } from "../context/cartContext";
 import { getCartAll } from "./services/getCartAll";//solicitud al servidor para obtener los datos del carrito de compras
 //import { Link } from 'react-router-dom'; 
 //import { Nav } from 'react-bootstrap'; 
@@ -24,16 +24,19 @@ const Navigation = () => {
  
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-  //const { cartproducts } = useContext(CartContext);
   //console.log("cartproducts de navigation",cartproducts)
   
-
+  const { cartproducts, getMyCart, cartproduct } = useContext(CartContext);
+  useEffect(() => {
+      getMyCart(userId)
+  
+    },[cartproduct, username ]);
 const [cartTotal, setCartTotal] = useState(0);
-
 const CartTotalValue = async () => {
   try {
     const cartData = await getCartAll(userId);//solicitud al servidor para obtener los productos del carrito por un usuario en especifico
-    const totalValue = Object.values(cartData.productsCart).reduce((total, current) => {//productsCart, viene de la respuesta del controlador
+    //const cartData = await getMyCart(userId);
+    const totalValue = Object.values(cartproducts).reduce((total, current) => {//productsCart, viene de la respuesta del controlador
       //reduce() es un método de array en JavaScript que permite iterar sobre los elementos del array y acumular un valor.
       //Object.values() es un método de JavaScript que devuelve un array con los valores de las propiedades de un objeto.
       return total + ((current.quantity) * (current.price));//parseFloat por si acaso es un string y convertirlo a numero, pero no es necesario
@@ -219,4 +222,4 @@ console.log(user);
   );
 };
 
-export default Navigation;
+export default Navigation
