@@ -5,38 +5,31 @@ import "./PublicationUser.css";
 import { UserContext } from "../context/UserContext";
 import { ProductContext } from "../context/ProductContext";
 
-import {
-  Container,
-  Image,
-  Button,
-  Form,
-  Row,
-  Col,
-  Stack,
-  Card,
-} from "react-bootstrap";
+import { Container, Image, Button, Row, Col, Card } from "react-bootstrap";
 
 const PublicationUser = () => {
-  const navigate = useNavigate();
-  const { products, setProducts, deleteProduct, addFavorite } = useContext(ProductContext);
-  const { userId, username, url_icons } = useContext(UserContext);
   let token = localStorage.getItem("token");
-console.log("Token", token);
+
+  const navigate = useNavigate();
+
+  const {
+    product,
+    products,
+    deleteProduct,
+    getMyProducts,
+    getFavorites,
+    productFav,
+    isFavorite,
+    handleFavoriteClick,
+  } = useContext(ProductContext);
+
+  const { userId, username, url_icons } = useContext(UserContext);
   const userProducts = products.filter((product) => product.id_user === userId);
 
-
-  /* const addFavorite = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id_product === id) {
-        return {
-          ...product,
-          isFavorite: !product.isFavorite,
-        };
-      }
-      return product;
-    });
-    setProducts(newProducts);
-  }; */
+  useEffect(() => {
+    getMyProducts();
+    getFavorites(token);
+  }, [product, productFav]);
 
   return (
     <Container>
@@ -95,11 +88,13 @@ console.log("Token", token);
                   <Card.Body>
                     <div
                       className="icon-heart-button"
-                      onClick={() => addFavorite(product.id_product, !product.isFavorite, token)}
+                      onClick={() =>
+                        handleFavoriteClick(product.id_product, userId, token)
+                      }
                     >
                       <IconHeart
                         className="border_heart"
-                        filled={product.isFavorite}
+                        filled={isFavorite(product.id_product, userId)}
                       />
                     </div>
                     <Card.Title>{product.name_product}</Card.Title>
@@ -136,10 +131,7 @@ console.log("Token", token);
                         variant="dark"
                         className=""
                         onClick={() =>
-                          navigate(
-                            `/modificar/${product.id_product}`
-                            /*  ?from=allproducts-details */
-                          )
+                          navigate(`/modificar/${product.id_product}`)
                         }
                         style={{ margin: "10px", width: "10rem" }}
                       >

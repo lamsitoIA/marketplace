@@ -1,17 +1,5 @@
-import React, { useState, useContext } from "react";
-
-import {
-  Badge,
-  Container,
-  Image,
-  Button,
-  Form,
-  Row,
-  Col,
-  Stack,
-  Card,
-} from "react-bootstrap";
-
+import React, { useState, useContext, useEffect } from "react";
+import { Badge, Container, Button, Row, Col, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
@@ -29,13 +17,10 @@ const Allproducts = ({
   numCards,
   columnClass,
 }) => {
+  let token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
-  const{addProductToCart, cartproduct} = useContext(CartContext);
-  console.log("cart desde allproduct",cartproduct)
   const { userId } = useContext(UserContext);
-  console.log("userId de allproduct", userId);
-  
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
   const [priceRange, setPriceRange] = useState([0, 999.999]);
@@ -103,8 +88,7 @@ const Allproducts = ({
       //navigate(`/profile/${userId}`); // Navegar a la página de perfil después de agregar a favoritos
     }
   };
-  
-  
+
   return (
     <>
       <Container>
@@ -179,11 +163,33 @@ const Allproducts = ({
                     <Card.Body>
                       <div // Botón del corazón
                         className="icon-heart-button" // Estilo CSS opcional
-                        onClick={() => addFavoriteOnClick(product.id_product)} // Llama a la función addFavoriteOnClick
+                        onClick={() => {
+                          if (!userId) {
+                            toast.error(
+                              "Debes iniciar sesión para agregar a favoritos",
+                              {
+                                position: "bottom-right",
+                                autoClose: 1900,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "dark",
+                              }
+                            );
+                          } else {
+                            handleFavoriteClick(
+                              product.id_product,
+                              userId,
+                              token
+                            );
+                          }
+                        }}
                       >
                         <IconHeart
                           className="border_heart"
-                          filled={product.isFavorite}
+                          filled={isFavorite(product.id_product, userId)}
                         />
                       </div>
                       <Card.Title> {product.name_product}</Card.Title>
