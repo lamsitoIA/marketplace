@@ -8,6 +8,7 @@ import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+import { CartContext } from "../context/cartContext";
 const Allproducts = ({
   isHomePage,
   isFilterDescrip,
@@ -26,6 +27,7 @@ const Allproducts = ({
     isFavorite,
     handleFavoriteClick,
   } = useContext(ProductContext);
+  const {addProductToCart} = useContext(CartContext)
   const { userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
@@ -59,6 +61,26 @@ const Allproducts = ({
     getMyProducts();
     getFavorites(token);
   }, [ product, productFav]);
+  
+  const handleAddToCart = (productId) => {
+    if (userId) {
+      addProductToCart(productId, userId);
+    } else {
+      toast.error(
+        "Debes iniciar sesión para agregar al carrito",
+        {
+          position: "bottom-right",
+          autoClose: 1900,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
+  };
   return (
     <>
       <Container>
@@ -187,6 +209,13 @@ const Allproducts = ({
                         style={{ margin: "10px", width: "10rem" }}
                       >
                         Ver detalles
+                      </Button>
+                      <Button
+                        variant="success"
+                        onClick={() => handleAddToCart(product.id_product)}
+                        style={{ margin: "10px", width: "10rem" }}
+>
+                        Agregar al Carrito
                       </Button>
                     </div>
                     <ToastContainer />
