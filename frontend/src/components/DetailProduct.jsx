@@ -3,8 +3,12 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { Container, Button, Badge, Stack, Image } from "react-bootstrap";
 import { FaAnglesLeft } from "react-icons/fa6";
-
+import { CartContext } from "../context/cartContext.jsx";
+import { UserContext } from "../context/UserContext.jsx";
+import { ToastContainer, toast } from "react-toastify";
 const DetailProduct = () => {
+  const {addProductToCart} = useContext(CartContext)
+  const { userId } = useContext(UserContext);
   const location = useLocation();
   const navigate = useNavigate();
   const fromHomePage = location.search.includes("from=homepage");
@@ -14,6 +18,25 @@ const DetailProduct = () => {
   useEffect(() => {
     getProductById(id);
   }, [product.id]);
+  const handleAddToCart = (productId) => {
+    if (userId) {
+      addProductToCart(productId, userId);
+    } else {
+      toast.error(
+        "Debes iniciar sesión para agregar al carrito",
+        {
+          position: "bottom-right",
+          autoClose: 1900,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
+  };
 
   return (
     <>
@@ -59,15 +82,14 @@ const DetailProduct = () => {
               <Button
                 className="custom-button m-1"
                 variant="dark"
-                /* onClick={() =>
-                  fromHomePage ? navigate(`/`) : navigate(`/allproducts`)
-                } */
+               onClick={() => handleAddToCart(product.id_product)}
               >
                 <Badge bg="secondary" className="p-1">
                   <FaAnglesLeft />{" "}
                 </Badge>
                 Agregar Carrito
               </Button>
+              <ToastContainer />
             </Stack>
           </Container>
         </div>
