@@ -1,0 +1,24 @@
+.cart-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px; /* Espacio entre el menú y el carrito */
+}
+
+.cart-icon-container {
+    display: flex;
+    align-items: center; /* Alinear verticalmente el icono y la cantidad */
+}
+
+.cart-icon {
+    font-size: 25px; /* Tamaño del icono */
+}
+
+.cart-quantity {
+    background-color: rgb(228, 13, 5); /* Color de fondo del círculo */
+    color: white; /* Color del texto */
+    border-radius: 50%; /* Hacer el texto circular */
+    padding: 2px 5px; /* Espaciado interno */
+    font-size: 12px; /* Tamaño del texto */
+    margin-left: 8px; /* Espacio entre el icono y la cantidad */
+}
+

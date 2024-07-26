@@ -163,7 +163,7 @@ VALUES ('Samsung s21', 'Esta nuevo en caja, con garantia', 899.990, 4, 'Nuevo' ,
  INSERT INTO brands (name)
 VALUES ('SAMSUNG'), ('LG'), ('APPLE'), ('DELL'), ('SONY'), ('LENOVO'), ('HP'), ('BOSE'),
        ('APPLE WATCH'), ('SONY WATCH'), ('FITBIT WATCH'), ('SAMSUNG WATCH'), ('XIAOAMI'), ('HUAWEI'); */
-       CREATE TABLE cart_items (
+        CREATE TABLE cart_items (
     id SERIAL PRIMARY KEY,
     id_user INT NOT NULL,
     id_product INT NOT NULL,
@@ -173,6 +173,15 @@ VALUES ('SAMSUNG'), ('LG'), ('APPLE'), ('DELL'), ('SONY'), ('LENOVO'), ('HP'), (
     FOREIGN KEY (id_user) REFERENCES users(id_user),
     FOREIGN KEY ( id_product) REFERENCES products(id_product)
 );
+-- Paso 1: Eliminar las claves foráneas existentes
+ALTER TABLE cart_items
+DROP CONSTRAINT cart_items_id_user_fkey,
+DROP CONSTRAINT cart_items_id_product_fkey;
+
+-- Paso 2: Agregar las claves foráneas con ON DELETE CASCADE
+ALTER TABLE cart_items
+ADD CONSTRAINT cart_items_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
+ADD CONSTRAINT cart_items_id_product_fkey FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE;
 
 
 SELECT ci.id, ci.quantity, ci.id_user AS id_comprador, p.name, p.price, p.quantity AS stock, p.description, p.url_image FROM  cart_items AS ci INNER JOIN products AS p ON ci.id_product = p.id_product WHERE ci.id_user = 17

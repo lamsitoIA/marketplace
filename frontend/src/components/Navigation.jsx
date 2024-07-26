@@ -15,7 +15,8 @@ import {
 } from "react-icons/fa6";
 import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/cartContext";
-import { getCartAll } from "./services/getCartAll";//solicitud al servidor para obtener los datos del carrito de compras
+import "../components/Cart.css";
+//import { getCartAll } from "./services/getCartAll";//solicitud al servidor para obtener los datos del carrito de compras
 //import { Link } from 'react-router-dom'; 
 //import { Nav } from 'react-bootstrap'; 
 //import {cartAdd} from "../components/services/cartAdd"
@@ -25,14 +26,14 @@ const Navigation = () => {
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
   //console.log("cartproducts de navigation",cartproducts)
-  
+  const [cartQuantity, setCartQuantity] = useState(0); // Estado para la cantidad de productos
   const { cartproducts, getMyCart, cartproduct } = useContext(CartContext);
   useEffect(() => {
       getMyCart(userId)
   
     },[cartproduct, username ]);
-const [cartTotal, setCartTotal] = useState(0);
-const CartTotalValue = async () => {
+//const [cartTotal, setCartTotal] = useState(0);
+/* onst CartTotalValue = async () => {
   try {
     const cartData = await getCartAll(userId);//solicitud al servidor para obtener los productos del carrito por un usuario en especifico
     //const cartData = await getMyCart(userId);
@@ -49,12 +50,24 @@ const CartTotalValue = async () => {
     setCartTotal(0);
     return 0;
   }
-};
+}; */
 
 
-console.log("valor de CartTotalValue: " + typeof CartTotalValue())
+//console.log("valor de CartTotalValue: " + typeof CartTotalValue())
 
   //const userId = isAuthenticated && user ? user.sub : localUserId;
+
+  const calculateCartQuantity = () => {
+    // Calcular la cantidad total de productos
+    const totalQuantity = Object.values(cartproducts).reduce((total, current) => {
+        return total + current.quantity;
+    }, 0);
+    setCartQuantity(totalQuantity); // Actualizar el estado de cantidad
+};
+
+useEffect(() => {
+    calculateCartQuantity(); // Llamar a la función para calcular la cantidad
+}, [cartproducts]);
 console.log(user);
 console.log("isAuthenticated", isAuthenticated) 
   let imageToShow;
@@ -208,10 +221,12 @@ console.log("isAuthenticated", isAuthenticated)
                 </NavDropdown>
 
                 
-            <Nav.Link as={Link} to={`/cart/${userId}`}>
-                  <FaCartPlus title="Carrito de Compra" />
-                  <span id="total" className="m-4">${cartTotal.toFixed(2)}</span>
-                </Nav.Link>
+                <Nav.Link as={Link} to={`/cart/${userId}`} className="cart-container">
+    <div className="cart-icon-container">
+        <FaCartPlus title="Carrito de Compra" className="cart-icon" />
+        <span className="cart-quantity">{cartQuantity}</span>
+    </div>
+</Nav.Link>
               </>
             ) : (
               <>

@@ -24,31 +24,32 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const addProductToCart = async (productId, id_user) => {//Esta función se encarga de añadir un nuevo producto al carrito de compra del usuario
-    const newCartItem = {
-      id_user_newCartItem: id_user,//clave y valor
-      id_product_newCartItem: productId,
-      quantity_newCartItem: 1,
-    };
-    const {
-      id_user_newCartItem,
-      id_product_newCartItem,
-      quantity_newCartItem,
-    } = newCartItem;
-    
+  const addProductToCart = async (productId, id_user) => {
+    // Primero, obtén el carrito actual
+    const currentCart = await getCartAll(id_user); // Obtiene el carrito actual
 
-    try {
-      const agregandoAlCarro = await cartAdd(newCartItem);//Llama a la función, que  realiza una solicitud de API para agregar el nuevo artículo al carrito del usuario
-      //se le pasa el objeto newCartItem que continen id usuario, id producto y la cantidad
-      setCartproduct(agregandoAlCarro);
-/*       console.log("getMyCart",getMyCart(id_user)) */
-      return agregandoAlCarro;//retorna el objeto con sus valores llamado del servidor 
-    } catch (error) {
-      console.error("Error adding product to cart:", error);
+    // Verifica si el producto ya existe en el carrito
+    const existingProductIndex = currentCart.productsCart.findIndex(item => item.id_product_newCartItem === productId);
+    if (existingProductIndex === -1)/* (!existingProductIndex) */ {
+        // Si el producto no existe, crea un nuevo elemento de carrito
+        const newCartItem = {
+            id_user_newCartItem: id_user,
+            id_product_newCartItem: productId,
+            quantity_newCartItem: 1,
+        };
+
+        try {
+            const agregandoAlCarro = await cartAdd(newCartItem); // Llama a la función para agregar el nuevo producto
+            setCartproduct(prevCart => [...prevCart, agregandoAlCarro]); // Actualiza el estado del carrito
+            return agregandoAlCarro; // Retorna el objeto con sus valores llamado del servidor
+        } catch (error) {
+            console.error("Error adding product to cart:", error);
+        }
+    } else {
+        // Si el producto ya existe, no lo agregamos
+        console.log("El producto ya existe en el carrito y no se agregará nuevamente.");
     }
-
-
-  };
+};
 
   const removeProductFromCart = async (productId) => {
     try {
